@@ -1,0 +1,348 @@
+[
+  {
+    "id": "img-tree-plant-1",
+    "mode": "image-mode",
+    "difficulty": 1,
+    "class": 1,
+    "location": ["India", "default"],
+    "right": {
+      "src": "/assets/banyan-tree.png",
+      "label": "banyan tree",
+      "size": "large",
+      "sizeValue": 9
+    },
+    "left": {
+      "src": "/assets/tulsi-plant.png",
+      "label": "tulsi plant",
+      "size": "small",
+      "sizeValue": 2
+    },
+    "explanationSimple": {
+      "en": "The banyan tree is bigger than the tulsi plant. Trees are larger than small plants.",
+      "hi": "बरगद का पेड़ तुलसी के पौधे से बड़ा है। पेड़ छोटे पौधों से बड़े होते हैं।",
+      "bn": "বটগাছ তুলসী গাছের চেয়ে বড়। গাছ ছোট গাছের চেয়ে বড় হয়।"
+    }
+  },
+  {
+    "id": "img-cow-goat-1",
+    "mode": "image-mode",
+    "difficulty": 1,
+    "class": 1,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/village-cow.png",
+      "label": "cow",
+      "size": "large",
+      "sizeValue": 8
+    },
+    "right": {
+      "src": "/assets/village-goat.png",
+      "label": "goat",
+      "size": "medium",
+      "sizeValue": 4
+    },
+    "explanationSimple": {
+      "en": "The cow is bigger than the goat. Cows are larger animals than goats.",
+      "hi": "गाय बकरी से बड़ी है। गायें बकरियों से बड़े जानवर हैं।",
+      "bn": "গরু ছাগলের চেয়ে বড়। গরু ছাগলের চেয়ে বড় প্রাণী।"
+    }
+  },
+  {
+    "id": "img-elephant-ant-1",
+    "mode": "image-mode",
+    "difficulty": 2,
+    "class": 2,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/elephant.png",
+      "label": "elephant",
+      "size": "large",
+      "sizeValue": 10
+    },
+    "right": {
+      "src": "/assets/ant.png",
+      "label": "ant",
+      "size": "small",
+      "sizeValue": 1
+    },
+    "explanationSimple": {
+      "en": "The elephant is much bigger than the ant. Elephants are the largest land animals.",
+      "hi": "हाथी चींटी से बहुत बड़ा है। हाथी सबसे बड़े भूमि जानवर हैं।",
+      "bn": "হাতি পিঁপড়ের চেয়ে অনেক বড়। হাতি হলো সবচেয়ে বড় স্থলচর প্রাণী।"
+    }
+  },
+  {
+    "id": "img-buffalo-chicken-1",
+    "mode": "image-mode",
+    "difficulty": 2,
+    "class": 2,
+    "location": ["India", "default"],
+    "right": {
+      "src": "/assets/water-buffalo.png",
+      "label": "water buffalo",
+      "size": "large",
+      "sizeValue": 8
+    },
+    "left": {
+      "src": "/assets/village-chicken.png",
+      "label": "chicken",
+      "size": "small",
+      "sizeValue": 2
+    },
+    "explanationSimple": {
+      "en": "The water buffalo is bigger than the chicken. Buffaloes are large farm animals.",
+      "hi": "भैंस मुर्गी से बड़ी है। भैंस बड़े खेती के जानवर हैं।",
+      "bn": "মহিষ মুরগীর চেয়ে বড়। মহিষ হলো বড় খামারের প্রাণী।"
+    }
+  },
+  {
+    "id": "img-mango-lemon-1",
+    "mode": "image-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/big-mango.png",
+      "label": "mango",
+      "size": "large",
+      "sizeValue": 6
+    },
+    "right": {
+      "src": "/assets/small-lemon.png",
+      "label": "lemon",
+      "size": "small",
+      "sizeValue": 2
+    },
+    "explanationSimple": {
+      "en": "The mango is bigger than the lemon. Mangoes are larger fruits than lemons.",
+      "hi": "आम नींबू से बड़ा है। आम नींबू से बड़े फल हैं।",
+      "bn": "আম লেবুর চেয়ে বড়। আম লেবুর চেয়ে বড় ফল।"
+    }
+  },
+  {
+    "id": "img-banyan-neem-1",
+    "mode": "image-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/banyan-big.png",
+      "label": "old banyan tree",
+      "size": "large",
+      "sizeValue": 10
+    },
+    "right": {
+      "src": "/assets/young-neem.png",
+      "label": "young neem tree",
+      "size": "medium",
+      "sizeValue": 5
+    },
+    "explanationSimple": {
+      "en": "The old banyan tree is bigger than the young neem tree. Old trees grow larger than young ones.",
+      "hi": "पुराना बरगद का पेड़ छोटे नीम के पेड़ से बड़ा है। पुराने पेड़ जवान पेड़ों से बड़े होते हैं।",
+      "bn": "পুরোনো বটগাছ কচি নিমগাছের চেয়ে বড়। পুরোনো গাছ কচি গাছের চেয়ে বড় হয়।"
+    }
+  },
+  {
+    "id": "img-jackfruit-guava-1",
+    "mode": "image-mode",
+    "difficulty": 4,
+    "class": 4,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/jackfruit.png",
+      "label": "jackfruit",
+      "size": "large",
+      "sizeValue": 9
+    },
+    "right": {
+      "src": "/assets/guava.png",
+      "label": "guava",
+      "size": "small",
+      "sizeValue": 3
+    },
+    "explanationSimple": {
+      "en": "The jackfruit is bigger than the guava. Jackfruits are among the largest fruits.",
+      "hi": "कटहल अमरूद से बड़ा है। कटहल सबसे बड़े फलों में से हैं।",
+      "bn": "কাঁঠাল পেয়ারার চেয়ে বড়। কাঁঠাল সবচেয়ে বড় ফলগুলোর মধ্যে একটি।"
+    }
+  },
+  {
+    "id": "img-well-pot-1",
+    "mode": "image-mode",
+    "difficulty": 4,
+    "class": 4,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/village-well.png",
+      "label": "village well",
+      "size": "large",
+      "sizeValue": 8
+    },
+    "right": {
+      "src": "/assets/water-pot.png",
+      "label": "water pot",
+      "size": "small",
+      "sizeValue": 3
+    },
+    "explanationSimple": {
+      "en": "The village well is bigger than the water pot. Wells are much larger than pots.",
+      "hi": "गाँव का कुआं पानी के घड़े से बड़ा है। कुएं घड़ों से बहुत बड़े होते हैं।",
+      "bn": "গ্রামের কুয়ো পানির কলসির চেয়ে বড়। কুয়ো কলসির চেয়ে অনেক বড় হয়।"
+    }
+  },
+  {
+    "id": "img-house-hut-1",
+    "mode": "image-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/pucca-house.png",
+      "label": "pucca house",
+      "size": "large",
+      "sizeValue": 8
+    },
+    "right": {
+      "src": "/assets/small-hut.png",
+      "label": "small hut",
+      "size": "small",
+      "sizeValue": 3
+    },
+    "explanationSimple": {
+      "en": "The pucca house is bigger than the small hut. Pucca houses are larger than traditional huts.",
+      "hi": "पक्का मकान छोटी झोपड़ी से बड़ा है। पक्के मकान पारंपरिक झोपड़ियों से बड़े होते हैं।",
+      "bn": "পাকা বাড়ি ছোট কুঁড়েঘরের চেয়ে বড়। পাকা বাড়ি ঐতিহ্যবাহী কুঁড়েঘরের চেয়ে বড় হয়।"
+    }
+  },
+  {
+    "id": "word-camel-rabbit-1",
+    "mode": "word-mode",
+    "difficulty": 2,
+    "class": 2,
+    "location": ["India", "default"],
+    "left": {
+      "word": "camel",
+      "label": "camel",
+      "size": "large",
+      "sizeValue": 8,
+      "image": "/assets/desert-camel.png"
+    },
+    "right": {
+      "word": "rabbit",
+      "label": "rabbit",
+      "size": "small",
+      "sizeValue": 2,
+      "image": "/assets/village-rabbit.png"
+    },
+    "explanationSimple": {
+      "en": "A camel is bigger than a rabbit. Camels are large desert animals.",
+      "hi": "ऊंट खरगोश से बड़ा है। ऊंट बड़े रेगिस्तानी जानवर हैं।",
+      "bn": "উট খরগোশের চেয়ে বড়। উট হলো বড় মরুভূমির প্রাণী।"
+    }
+  },
+  {
+    "id": "word-coconut-date-1",
+    "mode": "word-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["India", "default"],
+    "left": {
+      "word": "coconut",
+      "label": "coconut",
+      "size": "large",
+      "sizeValue": 6,
+      "image": "/assets/coconut.png"
+    },
+    "right": {
+      "word": "date",
+      "label": "date",
+      "size": "small",
+      "sizeValue": 1,
+      "image": "/assets/date-fruit.png"
+    },
+    "explanationSimple": {
+      "en": "A coconut is bigger than a date. Coconuts are much larger than dates.",
+      "hi": "नारियल खजूर से बड़ा है। नारियल खजूर से बहुत बड़े होते हैं।",
+      "bn": "নারকেল খেজুরের চেয়ে বড়। নারকেল খেজুরের চেয়ে অনেক বড় হয়।"
+    }
+  },
+  {
+    "id": "word-bullock-cart-bicycle-1",
+    "mode": "word-mode",
+    "difficulty": 4,
+    "class": 4,
+    "location": ["India", "default"],
+    "left": {
+      "word": "bullock cart",
+      "label": "bullock cart",
+      "size": "large",
+      "sizeValue": 7,
+      "image": "/assets/bullock-cart.png"
+    },
+    "right": {
+      "word": "bicycle",
+      "label": "bicycle",
+      "size": "medium",
+      "sizeValue": 4,
+      "image": "/assets/village-bicycle.png"
+    },
+    "explanationSimple": {
+      "en": "A bullock cart is bigger than a bicycle. Bullock carts are traditional large vehicles.",
+      "hi": "बैलगाड़ी साइकिल से बड़ी है। बैलगाड़ी पारंपरिक बड़े वाहन हैं।",
+      "bn": "বলদগাড়ি সাইকেলের চেয়ে বড়। বলদগাড়ি ঐতিহ্যবাহী বড় যানবাহন।"
+    }
+  },
+  {
+    "id": "word-pond-puddle-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "word": "village pond",
+      "label": "village pond",
+      "size": "large",
+      "sizeValue": 9,
+      "image": "/assets/village-pond.png"
+    },
+    "right": {
+      "word": "rain puddle",
+      "label": "rain puddle",
+      "size": "small",
+      "sizeValue": 2,
+      "image": "/assets/rain-puddle.png"
+    },
+    "explanationSimple": {
+      "en": "The village pond is bigger than the rain puddle. Ponds are much larger than puddles.",
+      "hi": "गाँव का तालाब बारिश के छोटे गड्ढे से बड़ा है। तालाब गड्ढों से बहुत बड़े होते हैं।",
+      "bn": "গ্রামের পুকুর বৃষ্টির পুত্তির চেয়ে বড়। পুকুর পুত্তির চেয়ে অনেক বড় হয়।"
+    }
+  },
+  {
+    "id": "word-field-garden-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "word": "rice field",
+      "label": "rice field",
+      "size": "large",
+      "sizeValue": 9,
+      "image": "/assets/rice-field.png"
+    },
+    "right": {
+      "word": "kitchen garden",
+      "label": "kitchen garden",
+      "size": "medium",
+      "sizeValue": 4,
+      "image": "/assets/kitchen-garden.png"
+    },
+    "explanationSimple": {
+      "en": "The rice field is bigger than the kitchen garden. Fields are larger than home gardens.",
+      "hi": "धान का खेत रसोई बगीचे से बड़ा है। खेत घरेलू बगीचों से बड़े होते हैं।",
+      "bn": "ধানক্ষেত রান্নাঘরের বাগানের চেয়ে বড়। ক্ষেত বাড়ির বাগানের চেয়ে বড় হয়।"
+    }
+  }
+]

@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Banyan tree - large, spreading -->
+  <rect width="200" height="200" fill="#87CEEB"/>
+  <!-- Trunk -->
+  <rect x="85" y="120" width="30" height="80" fill="#8B4513"/>
+  <!-- Main canopy -->
+  <ellipse cx="100" cy="100" rx="80" ry="60" fill="#228B22"/>
+  <!-- Additional branches -->
+  <ellipse cx="70" cy="80" rx="25" ry="20" fill="#32CD32"/>
+  <ellipse cx="130" cy="85" rx="30" ry="25" fill="#32CD32"/>
+  <ellipse cx="85" cy="120" rx="20" ry="15" fill="#32CD32"/>
+  <ellipse cx="115" cy="115" rx="25" ry="18" fill="#32CD32"/>
+  <!-- Aerial roots -->
+  <rect x="60" y="140" width="3" height="30" fill="#8B4513"/>
+  <rect x="140" y="130" width="3" height="40" fill="#8B4513"/>
+  <text x="100" y="190" text-anchor="middle" fill="#000" font-size="12">Large Banyan Tree</text>
+</svg>
