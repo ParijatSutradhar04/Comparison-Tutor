@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { StudentInfo, useAppContext } from '../App'
 import { AdaptiveEngineState, ChosenSide } from '../hooks/useAdaptiveEngine'
 import ImagePair from './ImagePair'
@@ -17,6 +17,7 @@ interface QuestionCardProps {
 
 export default function QuestionCard({ engine, studentInfo }: QuestionCardProps) {
   const { strings } = useAppContext()
+  const [isProcessing, setIsProcessing] = useState(false)
 
   useEffect(() => {
     if (!engine.currentQuestion) {
@@ -34,6 +35,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
   }
 
   const handleAnswer = (side: ChosenSide) => {
+    setIsProcessing(true) // Show processing state
     const isCorrect = engine.submitAnswer(side)
     
     // Only advance to next question if we won't show overlay
@@ -41,10 +43,21 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
     const willShowOverlay = !isCorrect && engine.mode === 'word-mode'
     
     if (!willShowOverlay) {
-      // Show next question after a delay, but only call it once
+      // Different delays based on mode and correctness for better UX
+      let delay = 300 // Default quick delay for image mode
+      
+      if (engine.mode === 'word-mode') {
+        // In word mode, give a bit more time to see the feedback
+        delay = isCorrect ? 1000 : 300
+      }
+      
       setTimeout(() => {
         engine.nextQuestion(studentInfo.class, studentInfo.location)
-      }, 2000) // Increased delay to avoid double calls
+        setIsProcessing(false) // Clear processing state
+      }, delay)
+    } else {
+      // For overlay cases, clear processing immediately since overlay handles the flow
+      setIsProcessing(false)
     }
   }
 
@@ -54,7 +67,17 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
   }
 
   return (
-    <div className="card">
+    <div className="card relative">
+      {/* Processing overlay for immediate feedback */}
+      {isProcessing && (
+        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10 rounded-lg">
+          <div className="text-center">
+            <div className="animate-pulse w-8 h-8 bg-green-500 rounded-full mx-auto mb-2"></div>
+            <p className="text-sm text-gray-600 font-medium">Processing...</p>
+          </div>
+        </div>
+      )}
+      
       <div className="text-center mb-6">
         <div className="flex items-center justify-center space-x-4 mb-4">
           <span className={`px-3 py-1 rounded-full text-sm font-medium ${

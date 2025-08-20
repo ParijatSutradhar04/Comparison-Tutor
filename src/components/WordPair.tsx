@@ -13,6 +13,15 @@ export default function WordPair({ question, onAnswer, showTimer }: WordPairProp
 
   const correctSide: ChosenSide = question.left.sizeValue > question.right.sizeValue ? 'left' : 'right'
 
+  // Debug logging
+  console.log('WordPair question:', {
+    id: question.id,
+    leftWord: question.left.word,
+    leftLabel: question.left.label,
+    rightWord: question.right.word,
+    rightLabel: question.right.label
+  })
+
   const handleClick = (side: ChosenSide) => {
     if (selectedSide) return // Already answered
 
@@ -50,9 +59,8 @@ export default function WordPair({ question, onAnswer, showTimer }: WordPairProp
           className={getButtonClass('left')}
           disabled={selectedSide !== null}
         >
-          <div className="text-4xl mb-2">�</div>
-          <div className="text-2xl font-bold capitalize">
-            {question.left.word}
+          <div className="text-2xl font-bold capitalize text-blue-600">
+            {question.left.word || question.left.label || 'Missing Word'}
           </div>
           <div className="text-sm text-gray-600">
             ({question.left.size})
@@ -68,9 +76,8 @@ export default function WordPair({ question, onAnswer, showTimer }: WordPairProp
           className={getButtonClass('right')}
           disabled={selectedSide !== null}
         >
-          <div className="text-4xl mb-2">�</div>
-          <div className="text-2xl font-bold capitalize">
-            {question.right.word}
+          <div className="text-2xl font-bold capitalize text-blue-600">
+            {question.right.word || question.right.label || 'Missing Word'}
           </div>
           <div className="text-sm text-gray-600">
             ({question.right.size})

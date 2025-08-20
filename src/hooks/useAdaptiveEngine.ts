@@ -132,7 +132,7 @@ export function useAdaptiveEngine() {
     setState(prev => ({
       ...prev,
       currentQuestion: selectedQuestion as QuestionItem,
-      timerActive: prev.mode === 'word-mode',
+      timerActive: prev.mode === 'word-mode' && !prev.showOverlay,
       timerSeconds: TIMER_SECONDS
     }))
     
@@ -164,17 +164,11 @@ export function useAdaptiveEngine() {
       mode: (newConsecutiveCorrect >= UNDERSTAND_THRESHOLD && prev.mode === 'image-mode') 
         ? 'word-mode' 
         : prev.mode,
-      timerActive: false
+      timerActive: false, // Always stop timer after answering
+      // Show overlay for incorrect answers in word mode
+      showOverlay: !correct && state.mode === 'word-mode',
+      overlayData: (!correct && state.mode === 'word-mode') ? state.currentQuestion : prev.overlayData
     }))
-
-    // Show overlay for incorrect answers in word mode
-    if (!correct && state.mode === 'word-mode') {
-      setState(prev => ({
-        ...prev,
-        showOverlay: true,
-        overlayData: state.currentQuestion
-      }))
-    }
     
     return correct
   }, [state.currentQuestion, state.consecutiveCorrect, state.mode])
@@ -203,7 +197,7 @@ export function useAdaptiveEngine() {
     if (shouldAdvance && studentClass && location) {
       setTimeout(() => {
         nextQuestion(studentClass, location)
-      }, 500) // Small delay to let overlay close first
+      }, 200) // Quick delay to let overlay close smoothly
     }
   }, [nextQuestion])
 
