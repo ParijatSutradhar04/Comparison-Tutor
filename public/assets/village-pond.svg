@@ -1,0 +1,50 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Village Pond -->
+  <rect width="200" height="200" fill="#e0f2fe"/>
+  
+  <!-- Large Pond -->
+  <ellipse cx="100" cy="120" rx="80" ry="40" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Water ripples -->
+  <g stroke="#1d4ed8" stroke-width="1" fill="none" opacity="0.6">
+    <ellipse cx="80" cy="110" rx="15" ry="5"/>
+    <ellipse cx="120" cy="105" rx="12" ry="4"/>
+    <ellipse cx="90" cy="130" rx="18" ry="6"/>
+    <ellipse cx="130" cy="125" rx="10" ry="3"/>
+    <ellipse cx="70" cy="135" rx="8" ry="3"/>
+  </g>
+  
+  <!-- Pond bank -->
+  <ellipse cx="100" cy="120" rx="85" ry="43" fill="none" stroke="#22c55e" stroke-width="3"/>
+  
+  <!-- Grass around pond -->
+  <g fill="#22c55e" opacity="0.7">
+    <rect x="15" y="118" width="2" height="8" transform="rotate(15 15 118)"/>
+    <rect x="25" y="125" width="2" height="10" transform="rotate(-10 25 125)"/>
+    <rect x="35" y="115" width="2" height="6" transform="rotate(20 35 115)"/>
+    <rect x="165" y="120" width="2" height="9" transform="rotate(-15 165 120)"/>
+    <rect x="175" y="130" width="2" height="7" transform="rotate(25 175 130)"/>
+    <rect x="185" y="115" width="2" height="8" transform="rotate(-20 185 115)"/>
+  </g>
+  
+  <!-- Small plants/reeds -->
+  <g stroke="#16a34a" stroke-width="2" fill="none">
+    <path d="M20 100 Q25 95 30 100"/>
+    <path d="M170 105 Q175 100 180 105"/>
+    <path d="M15 140 Q20 135 25 140"/>
+    <path d="M175 145 Q180 140 185 145"/>
+  </g>
+  
+  <!-- Trees near pond -->
+  <circle cx="40" cy="80" r="15" fill="#16a34a" opacity="0.8"/>
+  <rect x="38" y="80" width="4" height="20" fill="#78350f"/>
+  
+  <circle cx="160" cy="75" r="12" fill="#16a34a" opacity="0.8"/>
+  <rect x="158" y="75" width="4" height="18" fill="#78350f"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="170" width="200" height="30" fill="#84cc16"/>
+  
+  <!-- Label -->
+  <text x="100" y="195" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Large Village Pond</text>
+</svg>

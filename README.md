@@ -219,6 +219,8 @@ For production deployment:
 3. Optionally deploy the API server for dynamic features
 4. Add real image assets to the `public/assets` folder
 
-## 📝 License
+## 📝 Additions
 
-This is a demo project for educational purposes.
+- Include the name of the image options as well as the word option in hindi and bengali
+- Add the actual images
+- Refine the bengali and hindi texts.

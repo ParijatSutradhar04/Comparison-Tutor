@@ -86,7 +86,9 @@ export default function OverlayExplain({ data, onClose, language }: OverlayExpla
               🏠 {strings.tryAtHome || 'Try at home:'}
             </h3>
             <p className="text-gray-700">
-              {language === 'hi' 
+              {language === 'bn' 
+                ? 'এবার আপনি চেষ্টা করুন: বাড়িতে ফল গুনুন - কতটা আপেল বনাম কলা? শিক্ষককে লিখুন বা বলুন।'
+                : language === 'hi' 
                 ? 'अब आप कोशिश करें: घर में फल गिनें - कितने सेब बनाम केले? शिक्षक को लिखें या बताएं।'
                 : 'Now you try: count fruits at home — how many apples vs bananas? Write or tell a teacher.'
               }

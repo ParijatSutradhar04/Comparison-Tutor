@@ -12,6 +12,7 @@ export interface StudentInfo {
   class: number
   nativeLanguage: string
   location: string
+  funMode?: boolean
 }
 
 interface AppContextType {

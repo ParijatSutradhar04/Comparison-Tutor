@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "img-tree-plant-1",
     "mode": "image-mode",
@@ -6,21 +6,21 @@
     "class": 1,
     "location": ["India", "default"],
     "right": {
-      "src": "/assets/banyan-tree.png",
+      "src": "/assets/banyan-tree.svg",
       "label": "banyan tree",
       "size": "large",
       "sizeValue": 9
     },
     "left": {
-      "src": "/assets/tulsi-plant.png",
+      "src": "/assets/tulsi-plant.svg",
       "label": "tulsi plant",
       "size": "small",
       "sizeValue": 2
     },
     "explanationSimple": {
       "en": "The banyan tree is bigger than the tulsi plant. Trees are larger than small plants.",
-      "hi": "बरगद का पेड़ तुलसी के पौधे से बड़ा है। पेड़ छोटे पौधों से बड़े होते हैं।",
-      "bn": "বটগাছ তুলসী গাছের চেয়ে বড়। গাছ ছোট গাছের চেয়ে বড় হয়।"
+      "hi": "à¤¬à¤°à¤—à¤¦ à¤•à¤¾ à¤ªà¥‡à¤¡à¤¼ à¤¤à¥à¤²à¤¸à¥€ à¤•à¥‡ à¤ªà¥Œà¤§à¥‡ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤ªà¥‡à¤¡à¤¼ à¤›à¥‹à¤Ÿà¥‡ à¤ªà¥Œà¤§à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦¬à¦Ÿà¦—à¦¾à¦› à¦¤à§à¦²à¦¸à§€ à¦—à¦¾à¦›à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦—à¦¾à¦› à¦›à§‹à¦Ÿ à¦—à¦¾à¦›à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -30,21 +30,21 @@
     "class": 1,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/village-cow.png",
+      "src": "/assets/village-cow.svg",
       "label": "cow",
       "size": "large",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/village-goat.png",
+      "src": "/assets/village-goat.svg",
       "label": "goat",
       "size": "medium",
       "sizeValue": 4
     },
     "explanationSimple": {
       "en": "The cow is bigger than the goat. Cows are larger animals than goats.",
-      "hi": "गाय बकरी से बड़ी है। गायें बकरियों से बड़े जानवर हैं।",
-      "bn": "গরু ছাগলের চেয়ে বড়। গরু ছাগলের চেয়ে বড় প্রাণী।"
+      "hi": "à¤—à¤¾à¤¯ à¤¬à¤•à¤°à¥€ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥€ à¤¹à¥ˆà¥¤ à¤—à¤¾à¤¯à¥‡à¤‚ à¤¬à¤•à¤°à¤¿à¤¯à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤œà¤¾à¤¨à¤µà¤° à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦—à¦°à§ à¦›à¦¾à¦—à¦²à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦—à¦°à§ à¦›à¦¾à¦—à¦²à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦ªà§à¦°à¦¾à¦£à§€à¥¤"
     }
   },
   {
@@ -54,21 +54,21 @@
     "class": 2,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/elephant.png",
+      "src": "/assets/elephant.svg",
       "label": "elephant",
       "size": "large",
       "sizeValue": 10
     },
     "right": {
-      "src": "/assets/ant.png",
+      "src": "/assets/ant.svg",
       "label": "ant",
       "size": "small",
       "sizeValue": 1
     },
     "explanationSimple": {
       "en": "The elephant is much bigger than the ant. Elephants are the largest land animals.",
-      "hi": "हाथी चींटी से बहुत बड़ा है। हाथी सबसे बड़े भूमि जानवर हैं।",
-      "bn": "হাতি পিঁপড়ের চেয়ে অনেক বড়। হাতি হলো সবচেয়ে বড় স্থলচর প্রাণী।"
+      "hi": "à¤¹à¤¾à¤¥à¥€ à¤šà¥€à¤‚à¤Ÿà¥€ à¤¸à¥‡ à¤¬à¤¹à¥à¤¤ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤¹à¤¾à¤¥à¥€ à¤¸à¤¬à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤­à¥‚à¤®à¤¿ à¤œà¤¾à¤¨à¤µà¤° à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦¹à¦¾à¦¤à¦¿ à¦ªà¦¿à¦à¦ªà¦¡à¦¼à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦…à¦¨à§‡à¦• à¦¬à¦¡à¦¼à¥¤ à¦¹à¦¾à¦¤à¦¿ à¦¹à¦²à§‹ à¦¸à¦¬à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦¸à§à¦¥à¦²à¦šà¦° à¦ªà§à¦°à¦¾à¦£à§€à¥¤"
     }
   },
   {
@@ -78,21 +78,21 @@
     "class": 2,
     "location": ["India", "default"],
     "right": {
-      "src": "/assets/water-buffalo.png",
+      "src": "/assets/water-buffalo.svg",
       "label": "water buffalo",
       "size": "large",
       "sizeValue": 8
     },
     "left": {
-      "src": "/assets/village-chicken.png",
+      "src": "/assets/village-chicken.svg",
       "label": "chicken",
       "size": "small",
       "sizeValue": 2
     },
     "explanationSimple": {
       "en": "The water buffalo is bigger than the chicken. Buffaloes are large farm animals.",
-      "hi": "भैंस मुर्गी से बड़ी है। भैंस बड़े खेती के जानवर हैं।",
-      "bn": "মহিষ মুরগীর চেয়ে বড়। মহিষ হলো বড় খামারের প্রাণী।"
+      "hi": "à¤­à¥ˆà¤‚à¤¸ à¤®à¥à¤°à¥à¤—à¥€ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥€ à¤¹à¥ˆà¥¤ à¤­à¥ˆà¤‚à¤¸ à¤¬à¤¡à¤¼à¥‡ à¤–à¥‡à¤¤à¥€ à¤•à¥‡ à¤œà¤¾à¤¨à¤µà¤° à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦®à¦¹à¦¿à¦· à¦®à§à¦°à¦—à§€à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦®à¦¹à¦¿à¦· à¦¹à¦²à§‹ à¦¬à¦¡à¦¼ à¦–à¦¾à¦®à¦¾à¦°à§‡à¦° à¦ªà§à¦°à¦¾à¦£à§€à¥¤"
     }
   },
   {
@@ -102,21 +102,21 @@
     "class": 3,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/big-mango.png",
+      "src": "/assets/big-mango.svg",
       "label": "mango",
       "size": "large",
       "sizeValue": 6
     },
     "right": {
-      "src": "/assets/small-lemon.png",
+      "src": "/assets/small-lemon.svg",
       "label": "lemon",
       "size": "small",
       "sizeValue": 2
     },
     "explanationSimple": {
       "en": "The mango is bigger than the lemon. Mangoes are larger fruits than lemons.",
-      "hi": "आम नींबू से बड़ा है। आम नींबू से बड़े फल हैं।",
-      "bn": "আম লেবুর চেয়ে বড়। আম লেবুর চেয়ে বড় ফল।"
+      "hi": "à¤†à¤® à¤¨à¥€à¤‚à¤¬à¥‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤†à¤® à¤¨à¥€à¤‚à¤¬à¥‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤«à¤² à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦†à¦® à¦²à§‡à¦¬à§à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦†à¦® à¦²à§‡à¦¬à§à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦«à¦²à¥¤"
     }
   },
   {
@@ -126,21 +126,21 @@
     "class": 3,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/banyan-big.png",
+      "src": "/assets/banyan-big.svg",
       "label": "old banyan tree",
       "size": "large",
       "sizeValue": 10
     },
     "right": {
-      "src": "/assets/young-neem.png",
+      "src": "/assets/young-neem.svg",
       "label": "young neem tree",
       "size": "medium",
       "sizeValue": 5
     },
     "explanationSimple": {
       "en": "The old banyan tree is bigger than the young neem tree. Old trees grow larger than young ones.",
-      "hi": "पुराना बरगद का पेड़ छोटे नीम के पेड़ से बड़ा है। पुराने पेड़ जवान पेड़ों से बड़े होते हैं।",
-      "bn": "পুরোনো বটগাছ কচি নিমগাছের চেয়ে বড়। পুরোনো গাছ কচি গাছের চেয়ে বড় হয়।"
+      "hi": "à¤ªà¥à¤°à¤¾à¤¨à¤¾ à¤¬à¤°à¤—à¤¦ à¤•à¤¾ à¤ªà¥‡à¤¡à¤¼ à¤›à¥‹à¤Ÿà¥‡ à¤¨à¥€à¤® à¤•à¥‡ à¤ªà¥‡à¤¡à¤¼ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤ªà¥à¤°à¤¾à¤¨à¥‡ à¤ªà¥‡à¤¡à¤¼ à¤œà¤µà¤¾à¤¨ à¤ªà¥‡à¤¡à¤¼à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦ªà§à¦°à§‹à¦¨à§‹ à¦¬à¦Ÿà¦—à¦¾à¦› à¦•à¦šà¦¿ à¦¨à¦¿à¦®à¦—à¦¾à¦›à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦ªà§à¦°à§‹à¦¨à§‹ à¦—à¦¾à¦› à¦•à¦šà¦¿ à¦—à¦¾à¦›à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -150,21 +150,21 @@
     "class": 4,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/jackfruit.png",
+      "src": "/assets/jackfruit.svg",
       "label": "jackfruit",
       "size": "large",
       "sizeValue": 9
     },
     "right": {
-      "src": "/assets/guava.png",
+      "src": "/assets/guava.svg",
       "label": "guava",
       "size": "small",
       "sizeValue": 3
     },
     "explanationSimple": {
       "en": "The jackfruit is bigger than the guava. Jackfruits are among the largest fruits.",
-      "hi": "कटहल अमरूद से बड़ा है। कटहल सबसे बड़े फलों में से हैं।",
-      "bn": "কাঁঠাল পেয়ারার চেয়ে বড়। কাঁঠাল সবচেয়ে বড় ফলগুলোর মধ্যে একটি।"
+      "hi": "à¤•à¤Ÿà¤¹à¤² à¤…à¤®à¤°à¥‚à¤¦ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤•à¤Ÿà¤¹à¤² à¤¸à¤¬à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤«à¤²à¥‹à¤‚ à¤®à¥‡à¤‚ à¤¸à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦•à¦¾à¦à¦ à¦¾à¦² à¦ªà§‡à¦¯à¦¼à¦¾à¦°à¦¾à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦•à¦¾à¦à¦ à¦¾à¦² à¦¸à¦¬à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦«à¦²à¦—à§à¦²à§‹à¦° à¦®à¦§à§à¦¯à§‡ à¦à¦•à¦Ÿà¦¿à¥¤"
     }
   },
   {
@@ -174,21 +174,21 @@
     "class": 4,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/village-well.png",
+      "src": "/assets/village-well.svg",
       "label": "village well",
       "size": "large",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/water-pot.png",
+      "src": "/assets/water-pot.svg",
       "label": "water pot",
       "size": "small",
       "sizeValue": 3
     },
     "explanationSimple": {
       "en": "The village well is bigger than the water pot. Wells are much larger than pots.",
-      "hi": "गाँव का कुआं पानी के घड़े से बड़ा है। कुएं घड़ों से बहुत बड़े होते हैं।",
-      "bn": "গ্রামের কুয়ো পানির কলসির চেয়ে বড়। কুয়ো কলসির চেয়ে অনেক বড় হয়।"
+      "hi": "à¤—à¤¾à¤à¤µ à¤•à¤¾ à¤•à¥à¤†à¤‚ à¤ªà¤¾à¤¨à¥€ à¤•à¥‡ à¤˜à¤¡à¤¼à¥‡ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤•à¥à¤à¤‚ à¤˜à¤¡à¤¼à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¹à¥à¤¤ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦—à§à¦°à¦¾à¦®à§‡à¦° à¦•à§à¦¯à¦¼à§‹ à¦ªà¦¾à¦¨à¦¿à¦° à¦•à¦²à¦¸à¦¿à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦•à§à¦¯à¦¼à§‹ à¦•à¦²à¦¸à¦¿à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦…à¦¨à§‡à¦• à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -198,21 +198,21 @@
     "class": 5,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/pucca-house.png",
+      "src": "/assets/pucca-house.svg",
       "label": "pucca house",
       "size": "large",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/small-hut.png",
+      "src": "/assets/small-hut.svg",
       "label": "small hut",
       "size": "small",
       "sizeValue": 3
     },
     "explanationSimple": {
       "en": "The pucca house is bigger than the small hut. Pucca houses are larger than traditional huts.",
-      "hi": "पक्का मकान छोटी झोपड़ी से बड़ा है। पक्के मकान पारंपरिक झोपड़ियों से बड़े होते हैं।",
-      "bn": "পাকা বাড়ি ছোট কুঁড়েঘরের চেয়ে বড়। পাকা বাড়ি ঐতিহ্যবাহী কুঁড়েঘরের চেয়ে বড় হয়।"
+      "hi": "à¤ªà¤•à¥à¤•à¤¾ à¤®à¤•à¤¾à¤¨ à¤›à¥‹à¤Ÿà¥€ à¤à¥‹à¤ªà¤¡à¤¼à¥€ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤ªà¤•à¥à¤•à¥‡ à¤®à¤•à¤¾à¤¨ à¤ªà¤¾à¤°à¤‚à¤ªà¤°à¤¿à¤• à¤à¥‹à¤ªà¤¡à¤¼à¤¿à¤¯à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦ªà¦¾à¦•à¦¾ à¦¬à¦¾à¦¡à¦¼à¦¿ à¦›à§‹à¦Ÿ à¦•à§à¦à¦¡à¦¼à§‡à¦˜à¦°à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦ªà¦¾à¦•à¦¾ à¦¬à¦¾à¦¡à¦¼à¦¿ à¦à¦¤à¦¿à¦¹à§à¦¯à¦¬à¦¾à¦¹à§€ à¦•à§à¦à¦¡à¦¼à§‡à¦˜à¦°à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -226,19 +226,19 @@
       "label": "camel",
       "size": "large",
       "sizeValue": 8,
-      "image": "/assets/desert-camel.png"
+      "image": "/assets/desert-camel.svg"
     },
     "right": {
       "word": "rabbit",
       "label": "rabbit",
       "size": "small",
       "sizeValue": 2,
-      "image": "/assets/village-rabbit.png"
+      "image": "/assets/village-rabbit.svg"
     },
     "explanationSimple": {
       "en": "A camel is bigger than a rabbit. Camels are large desert animals.",
-      "hi": "ऊंट खरगोश से बड़ा है। ऊंट बड़े रेगिस्तानी जानवर हैं।",
-      "bn": "উট খরগোশের চেয়ে বড়। উট হলো বড় মরুভূমির প্রাণী।"
+      "hi": "à¤Šà¤‚à¤Ÿ à¤–à¤°à¤—à¥‹à¤¶ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤Šà¤‚à¤Ÿ à¤¬à¤¡à¤¼à¥‡ à¤°à¥‡à¤—à¤¿à¤¸à¥à¤¤à¤¾à¤¨à¥€ à¤œà¤¾à¤¨à¤µà¤° à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦‰à¦Ÿ à¦–à¦°à¦—à§‹à¦¶à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦‰à¦Ÿ à¦¹à¦²à§‹ à¦¬à¦¡à¦¼ à¦®à¦°à§à¦­à§‚à¦®à¦¿à¦° à¦ªà§à¦°à¦¾à¦£à§€à¥¤"
     }
   },
   {
@@ -252,19 +252,19 @@
       "label": "coconut",
       "size": "large",
       "sizeValue": 6,
-      "image": "/assets/coconut.png"
+      "image": "/assets/coconut.svg"
     },
     "right": {
       "word": "date",
       "label": "date",
       "size": "small",
       "sizeValue": 1,
-      "image": "/assets/date-fruit.png"
+      "image": "/assets/date-fruit.svg"
     },
     "explanationSimple": {
       "en": "A coconut is bigger than a date. Coconuts are much larger than dates.",
-      "hi": "नारियल खजूर से बड़ा है। नारियल खजूर से बहुत बड़े होते हैं।",
-      "bn": "নারকেল খেজুরের চেয়ে বড়। নারকেল খেজুরের চেয়ে অনেক বড় হয়।"
+      "hi": "à¤¨à¤¾à¤°à¤¿à¤¯à¤² à¤–à¤œà¥‚à¤° à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤¨à¤¾à¤°à¤¿à¤¯à¤² à¤–à¤œà¥‚à¤° à¤¸à¥‡ à¤¬à¤¹à¥à¤¤ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦¨à¦¾à¦°à¦•à§‡à¦² à¦–à§‡à¦œà§à¦°à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦¨à¦¾à¦°à¦•à§‡à¦² à¦–à§‡à¦œà§à¦°à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦…à¦¨à§‡à¦• à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -278,19 +278,19 @@
       "label": "bullock cart",
       "size": "large",
       "sizeValue": 7,
-      "image": "/assets/bullock-cart.png"
+      "image": "/assets/bullock-cart.svg"
     },
     "right": {
       "word": "bicycle",
       "label": "bicycle",
       "size": "medium",
       "sizeValue": 4,
-      "image": "/assets/village-bicycle.png"
+      "image": "/assets/village-bicycle.svg"
     },
     "explanationSimple": {
       "en": "A bullock cart is bigger than a bicycle. Bullock carts are traditional large vehicles.",
-      "hi": "बैलगाड़ी साइकिल से बड़ी है। बैलगाड़ी पारंपरिक बड़े वाहन हैं।",
-      "bn": "বলদগাড়ি সাইকেলের চেয়ে বড়। বলদগাড়ি ঐতিহ্যবাহী বড় যানবাহন।"
+      "hi": "à¤¬à¥ˆà¤²à¤—à¤¾à¤¡à¤¼à¥€ à¤¸à¤¾à¤‡à¤•à¤¿à¤² à¤¸à¥‡ à¤¬à¤¡à¤¼à¥€ à¤¹à¥ˆà¥¤ à¤¬à¥ˆà¤²à¤—à¤¾à¤¡à¤¼à¥€ à¤ªà¤¾à¤°à¤‚à¤ªà¤°à¤¿à¤• à¤¬à¤¡à¤¼à¥‡ à¤µà¤¾à¤¹à¤¨ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦¬à¦²à¦¦à¦—à¦¾à¦¡à¦¼à¦¿ à¦¸à¦¾à¦‡à¦•à§‡à¦²à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦¬à¦²à¦¦à¦—à¦¾à¦¡à¦¼à¦¿ à¦à¦¤à¦¿à¦¹à§à¦¯à¦¬à¦¾à¦¹à§€ à¦¬à¦¡à¦¼ à¦¯à¦¾à¦¨à¦¬à¦¾à¦¹à¦¨à¥¤"
     }
   },
   {
@@ -304,19 +304,19 @@
       "label": "village pond",
       "size": "large",
       "sizeValue": 9,
-      "image": "/assets/village-pond.png"
+      "image": "/assets/village-pond.svg"
     },
     "right": {
       "word": "rain puddle",
       "label": "rain puddle",
       "size": "small",
       "sizeValue": 2,
-      "image": "/assets/rain-puddle.png"
+      "image": "/assets/rain-puddle.svg"
     },
     "explanationSimple": {
       "en": "The village pond is bigger than the rain puddle. Ponds are much larger than puddles.",
-      "hi": "गाँव का तालाब बारिश के छोटे गड्ढे से बड़ा है। तालाब गड्ढों से बहुत बड़े होते हैं।",
-      "bn": "গ্রামের পুকুর বৃষ্টির পুত্তির চেয়ে বড়। পুকুর পুত্তির চেয়ে অনেক বড় হয়।"
+      "hi": "à¤—à¤¾à¤à¤µ à¤•à¤¾ à¤¤à¤¾à¤²à¤¾à¤¬ à¤¬à¤¾à¤°à¤¿à¤¶ à¤•à¥‡ à¤›à¥‹à¤Ÿà¥‡ à¤—à¤¡à¥à¤¢à¥‡ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤¤à¤¾à¤²à¤¾à¤¬ à¤—à¤¡à¥à¤¢à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¹à¥à¤¤ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦—à§à¦°à¦¾à¦®à§‡à¦° à¦ªà§à¦•à§à¦° à¦¬à§ƒà¦·à§à¦Ÿà¦¿à¦° à¦ªà§à¦¤à§à¦¤à¦¿à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦ªà§à¦•à§à¦° à¦ªà§à¦¤à§à¦¤à¦¿à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦…à¦¨à§‡à¦• à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   },
   {
@@ -330,19 +330,19 @@
       "label": "rice field",
       "size": "large",
       "sizeValue": 9,
-      "image": "/assets/rice-field.png"
+      "image": "/assets/rice-field.svg"
     },
     "right": {
       "word": "kitchen garden",
       "label": "kitchen garden",
       "size": "medium",
       "sizeValue": 4,
-      "image": "/assets/kitchen-garden.png"
+      "image": "/assets/kitchen-garden.svg"
     },
     "explanationSimple": {
       "en": "The rice field is bigger than the kitchen garden. Fields are larger than home gardens.",
-      "hi": "धान का खेत रसोई बगीचे से बड़ा है। खेत घरेलू बगीचों से बड़े होते हैं।",
-      "bn": "ধানক্ষেত রান্নাঘরের বাগানের চেয়ে বড়। ক্ষেত বাড়ির বাগানের চেয়ে বড় হয়।"
+      "hi": "à¤§à¤¾à¤¨ à¤•à¤¾ à¤–à¥‡à¤¤ à¤°à¤¸à¥‹à¤ˆ à¤¬à¤—à¥€à¤šà¥‡ à¤¸à¥‡ à¤¬à¤¡à¤¼à¤¾ à¤¹à¥ˆà¥¤ à¤–à¥‡à¤¤ à¤˜à¤°à¥‡à¤²à¥‚ à¤¬à¤—à¥€à¤šà¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¡à¤¼à¥‡ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+      "bn": "à¦§à¦¾à¦¨à¦•à§à¦·à§‡à¦¤ à¦°à¦¾à¦¨à§à¦¨à¦¾à¦˜à¦°à§‡à¦° à¦¬à¦¾à¦—à¦¾à¦¨à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼à¥¤ à¦•à§à¦·à§‡à¦¤ à¦¬à¦¾à¦¡à¦¼à¦¿à¦° à¦¬à¦¾à¦—à¦¾à¦¨à§‡à¦° à¦šà§‡à¦¯à¦¼à§‡ à¦¬à¦¡à¦¼ à¦¹à¦¯à¦¼à¥¤"
     }
   }
 ]

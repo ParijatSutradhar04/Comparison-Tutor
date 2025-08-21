@@ -1,0 +1,50 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bullock Cart -->
+  <rect width="200" height="200" fill="#fef3c7"/>
+  
+  <!-- Cart Base -->
+  <rect x="40" y="120" width="120" height="30" fill="#d97706" stroke="#c2410c" stroke-width="2"/>
+  
+  <!-- Cart Sides -->
+  <rect x="40" y="100" width="8" height="50" fill="#d97706" stroke="#c2410c" stroke-width="1"/>
+  <rect x="152" y="100" width="8" height="50" fill="#d97706" stroke="#c2410c" stroke-width="1"/>
+  
+  <!-- Wooden planks texture -->
+  <g stroke="#c2410c" stroke-width="1" fill="none">
+    <path d="M45 110 L155 110"/>
+    <path d="M45 130 L155 130"/>
+    <path d="M45 140 L155 140"/>
+  </g>
+  
+  <!-- Large Wheels -->
+  <circle cx="70" cy="150" r="20" fill="#78350f" stroke="#65281c" stroke-width="3"/>
+  <circle cx="130" cy="150" r="20" fill="#78350f" stroke="#65281c" stroke-width="3"/>
+  
+  <!-- Wheel spokes -->
+  <g stroke="#65281c" stroke-width="2">
+    <path d="M50 150 L90 150"/>
+    <path d="M70 130 L70 170"/>
+    <path d="M110 150 L150 150"/>
+    <path d="M130 130 L130 170"/>
+  </g>
+  
+  <!-- Axle -->
+  <rect x="50" y="148" width="100" height="4" fill="#374151"/>
+  
+  <!-- Bullocks (oxen) -->
+  <ellipse cx="30" cy="130" rx="15" ry="8" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <ellipse cx="15" cy="120" rx="8" ry="6" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  
+  <!-- Bullock horns -->
+  <path d="M8 115 Q5 110 3 105" stroke="#374151" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M22 115 Q25 110 27 105" stroke="#374151" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Yoke -->
+  <rect x="25" y="118" width="20" height="4" fill="#78350f" stroke="#65281c" stroke-width="1"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="180" width="200" height="20" fill="#84cc16"/>
+  
+  <!-- Label -->
+  <text x="100" y="195" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Large Bullock Cart</text>
+</svg>

@@ -4,6 +4,7 @@ import { AdaptiveEngineState, ChosenSide } from '../hooks/useAdaptiveEngine'
 import ImagePair from './ImagePair'
 import WordPair from './WordPair'
 import Timer from './Timer'
+import { fireStarConfetti } from '../utils/confetti'
 
 interface QuestionCardProps {
   engine: AdaptiveEngineState & {
@@ -38,6 +39,11 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
     setIsProcessing(true) // Show processing state
     const isCorrect = engine.submitAnswer(side)
     
+    // Trigger confetti celebration for correct answers if fun mode is enabled
+    if (isCorrect && studentInfo.funMode) {
+      fireStarConfetti()
+    }
+    
     // Only advance to next question if we won't show overlay
     // In word-mode, wrong answers show overlay and should not auto-advance
     const willShowOverlay = !isCorrect && engine.mode === 'word-mode'
@@ -51,6 +57,11 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
         delay = isCorrect ? 1000 : 300
       }
       
+      // Give extra time for confetti if it was triggered
+      if (isCorrect && studentInfo.funMode) {
+        delay = Math.max(delay, 800) // Ensure at least 800ms to see confetti
+      }
+      
       setTimeout(() => {
         engine.nextQuestion(studentInfo.class, studentInfo.location)
         setIsProcessing(false) // Clear processing state
@@ -59,11 +70,6 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
       // For overlay cases, clear processing immediately since overlay handles the flow
       setIsProcessing(false)
     }
-  }
-
-  // Create a wrapper for closeOverlay that includes student info for advancing
-  const handleCloseOverlay = () => {
-    engine.closeOverlay(true, studentInfo.class, studentInfo.location)
   }
 
   return (

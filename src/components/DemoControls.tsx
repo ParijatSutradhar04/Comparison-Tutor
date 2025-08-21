@@ -11,11 +11,21 @@ interface DemoControlsProps {
 }
 
 export default function DemoControls({ engine }: DemoControlsProps) {
-  const { strings, studentInfo } = useAppContext()
+  const { strings, studentInfo, setStudentInfo } = useAppContext()
 
   const handleDemoSequence = () => {
     if (studentInfo) {
       engine.runDemoSequence(studentInfo.class, studentInfo.location)
+    }
+  }
+
+  const toggleFunMode = () => {
+    if (studentInfo) {
+      const newFunMode = !studentInfo.funMode
+      const updatedInfo = { ...studentInfo, funMode: newFunMode }
+      setStudentInfo(updatedInfo)
+      localStorage.setItem('miniteach-fun-mode', JSON.stringify(newFunMode))
+      localStorage.setItem('studentInfo', JSON.stringify(updatedInfo))
     }
   }
 
@@ -61,6 +71,33 @@ export default function DemoControls({ engine }: DemoControlsProps) {
         >
           {strings.resetProgress || 'Reset Progress'}
         </button>
+
+        <hr className="my-4" />
+
+        {/* Fun Mode Toggle */}
+        <div className="bg-kids-amber/10 rounded-lg p-3 border border-kids-amber/20">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <div className="relative">
+              <input
+                type="checkbox"
+                checked={studentInfo?.funMode ?? true}
+                onChange={toggleFunMode}
+                className="sr-only"
+              />
+              <div className={`w-10 h-5 rounded-full transition-colors ${studentInfo?.funMode ? 'bg-kids-lime' : 'bg-gray-300'}`}>
+                <div className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform ${studentInfo?.funMode ? 'translate-x-6' : 'translate-x-0.5'} mt-0.5`}></div>
+              </div>
+            </div>
+            <div>
+              <span className="font-bold text-gray-800 text-sm flex items-center gap-1">
+                🎉 Fun Mode
+              </span>
+              <p className="text-xs text-gray-600">
+                Confetti on correct answers
+              </p>
+            </div>
+          </label>
+        </div>
 
         <hr className="my-4" />
 

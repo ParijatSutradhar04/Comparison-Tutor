@@ -1,0 +1,39 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Date Fruit -->
+  <rect width="200" height="200" fill="#f8fafc"/>
+  
+  <!-- Date - Small oval -->
+  <ellipse cx="100" cy="100" rx="8" ry="15" fill="#92400e" stroke="#78350f" stroke-width="1"/>
+  
+  <!-- Date texture/wrinkles -->
+  <g stroke="#78350f" stroke-width="0.5" fill="none">
+    <path d="M95 90 Q100 88 105 90"/>
+    <path d="M94 100 Q100 98 106 100"/>
+    <path d="M95 110 Q100 108 105 110"/>
+  </g>
+  
+  <!-- Slight highlight -->
+  <ellipse cx="98" cy="95" rx="2" ry="8" fill="#a3a3a3" opacity="0.3"/>
+  
+  <!-- Tiny stem -->
+  <rect x="99" y="85" width="2" height="3" fill="#65a30d"/>
+  
+  <!-- Scale reference - show multiple dates -->
+  <ellipse cx="120" cy="105" rx="8" ry="15" fill="#92400e" stroke="#78350f" stroke-width="1"/>
+  <ellipse cx="80" cy="95" rx="8" ry="15" fill="#92400e" stroke="#78350f" stroke-width="1"/>
+  
+  <!-- Texture for additional dates -->
+  <g stroke="#78350f" stroke-width="0.5" fill="none">
+    <path d="M115 95 Q120 93 125 95"/>
+    <path d="M114 105 Q120 103 126 105"/>
+    <path d="M75 85 Q80 83 85 85"/>
+    <path d="M74 95 Q80 93 86 95"/>
+  </g>
+  
+  <!-- Small stems -->
+  <rect x="119" y="90" width="2" height="3" fill="#65a30d"/>
+  <rect x="79" y="80" width="2" height="3" fill="#65a30d"/>
+  
+  <!-- Label -->
+  <text x="100" y="180" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Small Date Fruits</text>
+</svg>
