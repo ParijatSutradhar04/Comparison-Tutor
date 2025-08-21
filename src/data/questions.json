@@ -6,13 +6,13 @@
     "class": 1,
     "location": ["India", "default"],
     "right": {
-      "src": "/assets/banyan-tree.svg",
+      "src": "/assets/images/banyan_tree.jpg",
       "label": "banyan tree",
       "size": "",
       "sizeValue": 9
     },
     "left": {
-      "src": "/assets/tulsi-plant.svg",
+      "src": "/assets/images/tulsi_plant.jpg",
       "label": "tulsi plant",
       "size": "",
       "sizeValue": 2
@@ -30,13 +30,13 @@
     "class": 1,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/village-cow.svg",
+      "src": "/assets/images/cow.jpg",
       "label": "cow",
       "size": "",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/village-goat.svg",
+      "src": "/assets/images/goat.jpg",
       "label": "goat",
       "size": "",
       "sizeValue": 4
@@ -54,13 +54,13 @@
     "class": 2,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/elephant.svg",
+      "src": "/assets/images/elephant.jpg",
       "label": "elephant",
       "size": "",
       "sizeValue": 10
     },
     "right": {
-      "src": "/assets/ant.svg",
+      "src": "/assets/images/ant.jpg",
       "label": "ant",
       "size": "",
       "sizeValue": 1
@@ -78,13 +78,13 @@
     "class": 2,
     "location": ["India", "default"],
     "right": {
-      "src": "/assets/water-buffalo.svg",
+      "src": "/assets/images/water_buffalo.jpg",
       "label": "water buffalo",
       "size": "",
       "sizeValue": 8
     },
     "left": {
-      "src": "/assets/village-chicken.svg",
+      "src": "/assets/images/chicken.jpg",
       "label": "chicken",
       "size": "",
       "sizeValue": 2
@@ -102,13 +102,13 @@
     "class": 3,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/big-mango.svg",
+      "src": "/assets/images/mango.jpg",
       "label": "mango",
       "size": "",
       "sizeValue": 6
     },
     "right": {
-      "src": "/assets/small-lemon.svg",
+      "src": "/assets/images/lemon.jpg",
       "label": "lemon",
       "size": "",
       "sizeValue": 2
@@ -126,13 +126,13 @@
     "class": 3,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/banyan-big.svg",
+      "src": "/assets/images/old_banyan_tree.jpg",
       "label": "old banyan tree",
       "size": "",
       "sizeValue": 10
     },
     "right": {
-      "src": "/assets/young-neem.svg",
+      "src": "/assets/images/young_neem_tree.jpg",
       "label": "young neem tree",
       "size": "",
       "sizeValue": 5
@@ -150,13 +150,13 @@
     "class": 4,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/jackfruit.svg",
+      "src": "/assets/images/jackfruit.jpg",
       "label": "jackfruit",
       "size": "",
       "sizeValue": 9
     },
     "right": {
-      "src": "/assets/guava.svg",
+      "src": "/assets/images/guava.jpg",
       "label": "guava",
       "size": "",
       "sizeValue": 3
@@ -174,13 +174,13 @@
     "class": 4,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/village-well.svg",
+      "src": "/assets/images/village_well.jpg",
       "label": "village well",
       "size": "",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/water-pot.svg",
+      "src": "/assets/images/water_pot.jpg",
       "label": "water pot",
       "size": "",
       "sizeValue": 3
@@ -198,13 +198,13 @@
     "class": 5,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/pucca-house.svg",
+      "src": "/assets/images/pucca_house.jpg",
       "label": "pucca house",
       "size": "",
       "sizeValue": 8
     },
     "right": {
-      "src": "/assets/small-hut.svg",
+      "src": "/assets/images/small_hut.jpg",
       "label": "small hut",
       "size": "",
       "sizeValue": 3
@@ -226,14 +226,14 @@
       "label": "camel",
       "size": "",
       "sizeValue": 8,
-      "image": "/assets/desert-camel.svg"
+      "image": "/assets/images/camel.jpg"
     },
     "right": {
       "word": "rabbit",
       "label": "rabbit",
       "size": "",
       "sizeValue": 2,
-      "image": "/assets/village-rabbit.svg"
+      "image": "/assets/images/rabbit.jpg"
     },
     "explanationSimple": {
   "en": "A camel is bigger than a rabbit. Camels are tall animals that live in deserts; rabbits are small and soft.",
@@ -252,14 +252,14 @@
       "label": "coconut",
       "size": "",
       "sizeValue": 6,
-      "image": "/assets/coconut.svg"
+      "image": "/assets/images/coconut.jpg"
     },
     "right": {
       "word": "date",
       "label": "date",
       "size": "",
       "sizeValue": 1,
-      "image": "/assets/date-fruit.svg"
+      "image": "/assets/images/date.jpg"
     },
     "explanationSimple": {
       "en": "A coconut is bigger than a date. Coconuts are hard and round, while dates are small and soft.",
@@ -278,14 +278,14 @@
       "label": "bullock cart",
       "size": "",
       "sizeValue": 7,
-      "image": "/assets/bullock-cart.svg"
+      "image": "/assets/images/bullock_cart.jpg"
     },
     "right": {
       "word": "bicycle",
       "label": "bicycle",
       "size": "",
       "sizeValue": 4,
-      "image": "/assets/village-bicycle.svg"
+      "image": "/assets/images/bicycle.jpg"
     },
     "explanationSimple": {
       "en": "A bullock cart is bigger than a bicycle. Bullock carts are pulled by animals and are larger than a bicycle.",
@@ -304,14 +304,14 @@
       "label": "village pond",
       "size": "",
       "sizeValue": 9,
-      "image": "/assets/village-pond.svg"
+      "image": "/assets/images/village_pond.jpg"
     },
     "right": {
       "word": "rain puddle",
       "label": "rain puddle",
       "size": "",
       "sizeValue": 2,
-      "image": "/assets/rain-puddle.svg"
+      "image": "/assets/images/rain_puddle.jpg"
     },
     "explanationSimple": {
       "en": "A village pond is bigger than a rain puddle. Ponds hold a lot of water; puddles are small and shallow.",
@@ -330,14 +330,14 @@
       "label": "rice field",
       "size": "",
       "sizeValue": 9,
-      "image": "/assets/rice-field.svg"
+      "image": "/assets/images/rice_field.jpg"
     },
     "right": {
       "word": "kitchen garden",
       "label": "kitchen garden",
       "size": "",
       "sizeValue": 4,
-      "image": "/assets/kitchen-garden.svg"
+      "image": "/assets/images/kitchen_garden.jpg"
     },
     "explanationSimple": {
       "en": "A rice field is bigger than a kitchen garden. Fields cover more land and grow many crops; kitchen gardens are small near the house.",
