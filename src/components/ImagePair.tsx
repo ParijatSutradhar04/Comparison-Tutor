@@ -30,9 +30,9 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
     
     if (showFeedback && selectedSide) {
       if (side === correctSide) {
-        baseClass += ' border-green-500 bg-green-50 scale-105'
+        baseClass += ' !border-green-500 !bg-green-50 scale-105'
       } else if (side === selectedSide) {
-        baseClass += ' border-red-500 bg-red-50 scale-95'
+        baseClass += ' !border-red-500 !bg-red-50 scale-95'
       }
     }
     
