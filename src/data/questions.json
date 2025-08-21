@@ -8,13 +8,13 @@
     "right": {
       "src": "/assets/banyan-tree.svg",
       "label": "banyan tree",
-      "size": "large",
+      "size": "",
       "sizeValue": 9
     },
     "left": {
       "src": "/assets/tulsi-plant.svg",
       "label": "tulsi plant",
-      "size": "small",
+      "size": "",
       "sizeValue": 2
     },
     "explanationSimple": {
@@ -32,13 +32,13 @@
     "left": {
       "src": "/assets/village-cow.svg",
       "label": "cow",
-      "size": "large",
+      "size": "",
       "sizeValue": 8
     },
     "right": {
       "src": "/assets/village-goat.svg",
       "label": "goat",
-      "size": "medium",
+      "size": "",
       "sizeValue": 4
     },
     "explanationSimple": {
@@ -56,13 +56,13 @@
     "left": {
       "src": "/assets/elephant.svg",
       "label": "elephant",
-      "size": "large",
+      "size": "",
       "sizeValue": 10
     },
     "right": {
       "src": "/assets/ant.svg",
       "label": "ant",
-      "size": "small",
+      "size": "",
       "sizeValue": 1
     },
     "explanationSimple": {
@@ -80,13 +80,13 @@
     "right": {
       "src": "/assets/water-buffalo.svg",
       "label": "water buffalo",
-      "size": "large",
+      "size": "",
       "sizeValue": 8
     },
     "left": {
       "src": "/assets/village-chicken.svg",
       "label": "chicken",
-      "size": "small",
+      "size": "",
       "sizeValue": 2
     },
     "explanationSimple": {
@@ -104,13 +104,13 @@
     "left": {
       "src": "/assets/big-mango.svg",
       "label": "mango",
-      "size": "large",
+      "size": "",
       "sizeValue": 6
     },
     "right": {
       "src": "/assets/small-lemon.svg",
       "label": "lemon",
-      "size": "small",
+      "size": "",
       "sizeValue": 2
     },
     "explanationSimple": {
@@ -128,13 +128,13 @@
     "left": {
       "src": "/assets/banyan-big.svg",
       "label": "old banyan tree",
-      "size": "large",
+      "size": "",
       "sizeValue": 10
     },
     "right": {
       "src": "/assets/young-neem.svg",
       "label": "young neem tree",
-      "size": "medium",
+      "size": "",
       "sizeValue": 5
     },
     "explanationSimple": {
@@ -152,13 +152,13 @@
     "left": {
       "src": "/assets/jackfruit.svg",
       "label": "jackfruit",
-      "size": "large",
+      "size": "",
       "sizeValue": 9
     },
     "right": {
       "src": "/assets/guava.svg",
       "label": "guava",
-      "size": "small",
+      "size": "",
       "sizeValue": 3
     },
     "explanationSimple": {
@@ -176,13 +176,13 @@
     "left": {
       "src": "/assets/village-well.svg",
       "label": "village well",
-      "size": "large",
+      "size": "",
       "sizeValue": 8
     },
     "right": {
       "src": "/assets/water-pot.svg",
       "label": "water pot",
-      "size": "small",
+      "size": "",
       "sizeValue": 3
     },
     "explanationSimple": {
@@ -200,13 +200,13 @@
     "left": {
       "src": "/assets/pucca-house.svg",
       "label": "pucca house",
-      "size": "large",
+      "size": "",
       "sizeValue": 8
     },
     "right": {
       "src": "/assets/small-hut.svg",
       "label": "small hut",
-      "size": "small",
+      "size": "",
       "sizeValue": 3
     },
     "explanationSimple": {
@@ -224,14 +224,14 @@
     "left": {
       "word": "camel",
       "label": "camel",
-      "size": "large",
+      "size": "",
       "sizeValue": 8,
       "image": "/assets/desert-camel.svg"
     },
     "right": {
       "word": "rabbit",
       "label": "rabbit",
-      "size": "small",
+      "size": "",
       "sizeValue": 2,
       "image": "/assets/village-rabbit.svg"
     },
@@ -250,14 +250,14 @@
     "left": {
       "word": "coconut",
       "label": "coconut",
-      "size": "large",
+      "size": "",
       "sizeValue": 6,
       "image": "/assets/coconut.svg"
     },
     "right": {
       "word": "date",
       "label": "date",
-      "size": "small",
+      "size": "",
       "sizeValue": 1,
       "image": "/assets/date-fruit.svg"
     },
@@ -276,14 +276,14 @@
     "left": {
       "word": "bullock cart",
       "label": "bullock cart",
-      "size": "large",
+      "size": "",
       "sizeValue": 7,
       "image": "/assets/bullock-cart.svg"
     },
     "right": {
       "word": "bicycle",
       "label": "bicycle",
-      "size": "medium",
+      "size": "",
       "sizeValue": 4,
       "image": "/assets/village-bicycle.svg"
     },
@@ -302,14 +302,14 @@
     "left": {
       "word": "village pond",
       "label": "village pond",
-      "size": "large",
+      "size": "",
       "sizeValue": 9,
       "image": "/assets/village-pond.svg"
     },
     "right": {
       "word": "rain puddle",
       "label": "rain puddle",
-      "size": "small",
+      "size": "",
       "sizeValue": 2,
       "image": "/assets/rain-puddle.svg"
     },
@@ -328,14 +328,14 @@
     "left": {
       "word": "rice field",
       "label": "rice field",
-      "size": "large",
+      "size": "",
       "sizeValue": 9,
       "image": "/assets/rice-field.svg"
     },
     "right": {
       "word": "kitchen garden",
       "label": "kitchen garden",
-      "size": "medium",
+      "size": "",
       "sizeValue": 4,
       "image": "/assets/kitchen-garden.svg"
     },
