@@ -132,7 +132,7 @@ export function useAdaptiveEngine() {
     setState(prev => ({
       ...prev,
       currentQuestion: selectedQuestion as QuestionItem,
-      timerActive: prev.mode === 'word-mode' && !prev.showOverlay,
+      timerActive: prev.mode === 'word-mode' && !prev.showOverlay && selectedQuestion.mode === 'word-mode',
       timerSeconds: TIMER_SECONDS
     }))
     
@@ -165,9 +165,9 @@ export function useAdaptiveEngine() {
         ? 'word-mode' 
         : prev.mode,
       timerActive: false, // Always stop timer after answering
-      // Show overlay for incorrect answers in word mode
-      showOverlay: !correct && state.mode === 'word-mode',
-      overlayData: (!correct && state.mode === 'word-mode') ? state.currentQuestion : prev.overlayData
+      // Show overlay for incorrect answers in word mode, but only if current question is also word-mode
+      showOverlay: !correct && state.mode === 'word-mode' && state.currentQuestion?.mode === 'word-mode',
+      overlayData: (!correct && state.mode === 'word-mode' && state.currentQuestion?.mode === 'word-mode') ? state.currentQuestion : prev.overlayData
     }))
     
     return correct
@@ -177,8 +177,8 @@ export function useAdaptiveEngine() {
     setState(prev => ({
       ...prev,
       timerActive: false,
-      showOverlay: true,
-      overlayData: prev.currentQuestion,
+      showOverlay: prev.currentQuestion?.mode === 'word-mode',
+      overlayData: prev.currentQuestion?.mode === 'word-mode' ? prev.currentQuestion : null,
       totalQuestions: prev.totalQuestions + 1,
       difficulty: Math.max(1, prev.difficulty - 1)
     }))

@@ -1,35 +1,32 @@
-import { useAppContext } from '../App'
+import { useAppContext } from '../contexts/AppContext'
 
 export default function Header() {
   const { studentInfo, strings } = useAppContext()
-  const funMode = studentInfo?.funMode ?? false
 
   return (
-    <header className={`shadow-sm border-b-2 ${funMode ? 'bg-gradient-to-r from-kids-pink/20 to-kids-purple/20 border-kids-purple/30' : 'bg-white border-primary/20'}`}>
-      <div className="container mx-auto px-4 py-4">
+    <header className="relative z-10 bg-white/90 backdrop-blur-sm shadow-lg border-b-4 border-indigo-200">
+      <div className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className={`text-2xl font-bold ${funMode ? 'font-display text-kids-purple' : 'text-primary'}`}>
-              {funMode ? '🌟 MiniTeach' : '📚 MiniTeach'}
+          <div className="flex items-center space-x-6">
+            <div className="text-4xl font-black font-display text-indigo-800">
+              🌟 MiniTeach
             </div>
-            <div className="text-sm text-gray-600">
-              {funMode ? (strings.funLearning || 'Fun Learning with Numbers!') : (strings.greaterLessDemo || 'Greater/Less Demo')}
+            <div className="text-lg text-indigo-600 font-semibold">
+              {strings.funLearning || 'Fun Learning with Numbers!'}
             </div>
           </div>
           
           {studentInfo && (
-            <div className="flex items-center space-x-4 text-sm text-gray-600">
-              <span className="font-medium">
-                {funMode ? '🎉' : '👋'} {strings.hello || 'Hello'}, {studentInfo.name}!
+            <div className="flex items-center space-x-6">
+              <span className="text-xl font-bold text-indigo-700">
+                🎉 {strings.hello || 'Hello'}, {studentInfo.name}!
               </span>
-              <span className={`px-3 py-1 rounded-full ${funMode ? 'bg-kids-amber/20 text-kids-purple font-medium' : 'bg-gray-100'}`}>
+              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-indigo-900 px-4 py-2 rounded-full font-black text-lg shadow-lg">
                 {strings.class || 'Class'} {studentInfo.class}
               </span>
-              {funMode && (
-                <span className="animate-pulse">
-                  ⭐
-                </span>
-              )}
+              <span className="animate-pulse text-2xl">
+                ⭐
+              </span>
             </div>
           )}
         </div>

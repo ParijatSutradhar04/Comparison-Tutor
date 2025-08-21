@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StudentInfo } from '../App'
+import { StudentInfo } from '../contexts/AppContext'
 import StickerWall from './StickerWall'
 import MascotBadge from './MascotBadge'
 

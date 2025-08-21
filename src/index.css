@@ -64,3 +64,18 @@
   50% { transform: translateY(-8px); }
   100% { transform: translateY(0px); }
 }
+
+.floaty-delay-1 {
+  animation: floaty 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.floaty-delay-2 {
+  animation: floaty 5s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.floaty-delay-half {
+  animation: floaty 5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}

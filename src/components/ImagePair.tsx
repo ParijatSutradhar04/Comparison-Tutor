@@ -26,13 +26,13 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
   }
 
   const getButtonClass = (side: ChosenSide) => {
-    let baseClass = 'btn-choice min-h-[200px] flex flex-col items-center justify-center space-y-3'
+    let baseClass = 'bg-white border-4 border-sky-300 rounded-3xl p-6 hover:border-indigo-500 transition-all duration-300 cursor-pointer active:scale-95 shadow-xl hover:shadow-2xl min-h-[300px] flex flex-col items-center justify-center space-y-4 hover:scale-105'
     
     if (showFeedback && selectedSide) {
       if (side === correctSide) {
-        baseClass += ' correct'
+        baseClass += ' border-green-500 bg-green-50 scale-105'
       } else if (side === selectedSide) {
-        baseClass += ' incorrect'
+        baseClass += ' border-red-500 bg-red-50 scale-95'
       }
     }
     
@@ -73,7 +73,6 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
   // Generate placeholder SVG as JSX for size-based display
   const generatePlaceholderSVG = (sizeValue: number, label: string, size: string) => {
     // Use size to determine visual representation
-    const displaySize = size === 'large' ? 80 : size === 'medium' ? 50 : 30
     const circleSize = size === 'large' ? 12 : size === 'medium' ? 8 : 4
     
     return (
@@ -114,40 +113,60 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Left Side */}
-      <div className="text-center">
-        <h3 className="text-lg font-semibold mb-4 text-gray-700">Left</h3>
-        <button
-          onClick={() => handleClick('left')}
-          className={getButtonClass('left')}
-          disabled={selectedSide !== null}
-        >
-          <div className="mb-2">
-            {renderImage(question.left.src, question.left.sizeValue, question.left.label, question.left.size)}
-          </div>
-          <div className="text-lg font-bold">
-            {question.left.size} {question.left.label}
-          </div>
-        </button>
-      </div>
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        {/* Left Side */}
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Left</h3>
+          <button
+            onClick={() => handleClick('left')}
+            className={getButtonClass('left')}
+            disabled={selectedSide !== null}
+          >
+            <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
+              {renderImage(question.left.src, question.left.sizeValue, question.left.label, question.left.size)}
+            </div>
+            <div className="text-2xl font-black text-gray-800 capitalize">
+              {question.left.size} {question.left.label}
+            </div>
+          </button>
+        </div>
 
-      {/* Right Side */}
-      <div className="text-center">
-        <h3 className="text-lg font-semibold mb-4 text-gray-700">Right</h3>
-        <button
-          onClick={() => handleClick('right')}
-          className={getButtonClass('right')}
-          disabled={selectedSide !== null}
-        >
-          <div className="mb-2">
-            {renderImage(question.right.src, question.right.sizeValue, question.right.label, question.right.size)}
-          </div>
-          <div className="text-lg font-bold">
-            {question.right.size} {question.right.label}
-          </div>
-        </button>
+        {/* Right Side */}
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Right</h3>
+          <button
+            onClick={() => handleClick('right')}
+            className={getButtonClass('right')}
+            disabled={selectedSide !== null}
+          >
+            <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
+              {renderImage(question.right.src, question.right.sizeValue, question.right.label, question.right.size)}
+            </div>
+            <div className="text-2xl font-black text-gray-800 capitalize">
+              {question.right.size} {question.right.label}
+            </div>
+          </button>
+        </div>
       </div>
+      
+      {/* Action buttons like in mockup */}
+      {!selectedSide && (
+        <div className="flex justify-center space-x-4">
+          <button
+            onClick={() => handleClick('left')}
+            className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-black text-xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            Choose Left
+          </button>
+          <button
+            onClick={() => handleClick('right')}
+            className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-black text-xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          >
+            Choose Right
+          </button>
+        </div>
+      )}
     </div>
   )
 }

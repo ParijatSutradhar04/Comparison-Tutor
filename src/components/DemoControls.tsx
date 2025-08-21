@@ -1,5 +1,5 @@
 import { AdaptiveEngineState } from '../hooks/useAdaptiveEngine'
-import { useAppContext } from '../App'
+import { useAppContext } from '../contexts/AppContext'
 
 interface DemoControlsProps {
   engine: AdaptiveEngineState & {

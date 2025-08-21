@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { StudentInfo, useAppContext } from '../App'
+import { StudentInfo, useAppContext } from '../contexts/AppContext'
 import { AdaptiveEngineState, ChosenSide } from '../hooks/useAdaptiveEngine'
 import ImagePair from './ImagePair'
 import WordPair from './WordPair'
@@ -73,62 +73,75 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
   }
 
   return (
-    <div className="card relative">
-      {/* Processing overlay for immediate feedback */}
-      {isProcessing && (
-        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10 rounded-lg">
-          <div className="text-center">
-            <div className="animate-pulse w-8 h-8 bg-green-500 rounded-full mx-auto mb-2"></div>
-            <p className="text-sm text-gray-600 font-medium">Processing...</p>
+    <div className="relative">
+      {/* Main question container - matching the mockup's purple rounded design */}
+      <div className="bg-white rounded-[2rem] shadow-2xl border-4 border-indigo-600 p-8 relative overflow-hidden">
+        {/* Decorative corner elements */}
+        <div className="absolute top-4 left-4 w-3 h-3 bg-yellow-400 rounded-full"></div>
+        <div className="absolute top-4 right-4 w-3 h-3 bg-pink-400 rounded-full"></div>
+        <div className="absolute bottom-4 left-4 w-3 h-3 bg-green-400 rounded-full"></div>
+        <div className="absolute bottom-4 right-4 w-3 h-3 bg-blue-400 rounded-full"></div>
+        
+        {/* Processing overlay for immediate feedback */}
+        {isProcessing && (
+          <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10 rounded-[2rem]">
+            <div className="text-center">
+              <div className="animate-pulse w-8 h-8 bg-green-500 rounded-full mx-auto mb-2"></div>
+              <p className="text-sm text-gray-600 font-medium">Processing...</p>
+            </div>
           </div>
-        </div>
-      )}
-      
-      <div className="text-center mb-6">
-        <div className="flex items-center justify-center space-x-4 mb-4">
-          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-            engine.mode === 'image-mode' 
-              ? 'bg-blue-100 text-blue-800' 
-              : 'bg-purple-100 text-purple-800'
-          }`}>
-            {engine.mode === 'image-mode' 
-              ? (strings.imageMode || 'Image Mode')
-              : (strings.wordMode || 'Word Mode')
-            }
-          </span>
-          
-          <span className="bg-gray-100 px-3 py-1 rounded-full text-sm font-medium">
-            {strings.difficulty || 'Difficulty'} {engine.difficulty}/5
-          </span>
+        )}
+        
+        {/* Header section */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center space-x-4 mb-6">
+            <span className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
+              engine.mode === 'image-mode' 
+                ? 'bg-blue-500 text-white' 
+                : 'bg-purple-500 text-white'
+            }`}>
+              {engine.mode === 'image-mode' 
+                ? (strings.imageMode || 'Image Mode')
+                : (strings.wordMode || 'Word Mode')
+              }
+            </span>
+            
+            <span className="bg-gradient-to-r from-orange-400 to-pink-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+              {strings.difficulty || 'Difficulty'} {engine.difficulty}/5
+            </span>
 
-          {engine.mode === 'word-mode' && engine.timerActive && (
-            <Timer 
-              seconds={engine.timerSeconds}
-              onExpired={engine.timerExpired}
+            {engine.mode === 'word-mode' && engine.timerActive && (
+              <Timer 
+                seconds={engine.timerSeconds}
+                onExpired={engine.timerExpired}
+              />
+            )}
+          </div>
+
+          <h2 className="text-4xl font-black text-indigo-800 mb-3 font-display">
+            {strings.whichHasMore || 'Which is bigger?'}
+          </h2>
+          <p className="text-lg text-indigo-600 font-semibold">
+            {strings.chooseLeftOrRight || 'Choose Left or Right'}
+          </p>
+        </div>
+
+        {/* Question content */}
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
+          {engine.mode === 'image-mode' ? (
+            <ImagePair
+              question={engine.currentQuestion}
+              onAnswer={handleAnswer}
+            />
+          ) : (
+            <WordPair
+              question={engine.currentQuestion}
+              onAnswer={handleAnswer}
+              showTimer={engine.timerActive}
             />
           )}
         </div>
-
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          {strings.whichHasMore || 'Which has more?'}
-        </h2>
-        <p className="text-gray-600">
-          {strings.chooseLeftOrRight || 'Choose Left or Right'}
-        </p>
       </div>
-
-      {engine.mode === 'image-mode' ? (
-        <ImagePair
-          question={engine.currentQuestion}
-          onAnswer={handleAnswer}
-        />
-      ) : (
-        <WordPair
-          question={engine.currentQuestion}
-          onAnswer={handleAnswer}
-          showTimer={engine.timerActive}
-        />
-      )}
     </div>
   )
 }
