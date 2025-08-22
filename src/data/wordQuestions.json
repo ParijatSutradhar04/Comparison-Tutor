@@ -1,0 +1,132 @@
+[
+  {
+    "id": "word-camel-rabbit-1",
+    "mode": "word-mode",
+    "difficulty": 2,
+    "class": 2,
+    "location": ["India", "default"],
+    "left": {
+      "word": "camel",
+      "label": "camel",
+      "size": "",
+      "sizeValue": 8,
+      "image": "/assets/images/camel.jpg"
+    },
+    "right": {
+      "word": "rabbit",
+      "label": "rabbit",
+      "size": "",
+      "sizeValue": 2,
+      "image": "/assets/images/rabbit.jpg"
+    },
+    "explanationSimple": {
+      "en": "A camel is bigger than a rabbit. Camels are tall animals that live in deserts; rabbits are small and soft.",
+      "hi": "ऊँट खरगोश से बड़ा होता है। ऊँट रेगिस्तान के बड़े जानवर होते हैं; खरगोश छोटे और नरम होते हैं।",
+      "bn": "উট খরগোশের চেয়ে বড়। উট মরুভূমির বড় প্রাণী, খরগোশ ছোট ও নরম।"
+    }
+  },
+  {
+    "id": "word-coconut-date-1",
+    "mode": "word-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["India", "default"],
+    "left": {
+      "word": "coconut",
+      "label": "coconut",
+      "size": "",
+      "sizeValue": 6,
+      "image": "/assets/images/coconut.jpg"
+    },
+    "right": {
+      "word": "date",
+      "label": "date",
+      "size": "",
+      "sizeValue": 1,
+      "image": "/assets/images/date.jpg"
+    },
+    "explanationSimple": {
+      "en": "A coconut is bigger than a date. Coconuts are hard and round, while dates are small and soft.",
+      "hi": "नारियल खजूर से बड़ा होता है। नारियल कठोर और गोल होता है; खजूर छोटा और नरम होता है।",
+      "bn": "নারিকেল খেজুরের চেয়ে বড়। নারিকেল শক্ত ও গোল, খেজুর ছোট ও নরম।"
+    }
+  },
+  {
+    "id": "word-bullock-cart-bicycle-1",
+    "mode": "word-mode",
+    "difficulty": 4,
+    "class": 4,
+    "location": ["India", "default"],
+    "left": {
+      "word": "bullock cart",
+      "label": "bullock cart",
+      "size": "",
+      "sizeValue": 7,
+      "image": "/assets/images/bullock_cart.jpg"
+    },
+    "right": {
+      "word": "bicycle",
+      "label": "bicycle",
+      "size": "",
+      "sizeValue": 4,
+      "image": "/assets/images/bicycle.jpg"
+    },
+    "explanationSimple": {
+      "en": "A bullock cart is bigger than a bicycle. Bullock carts are pulled by animals and are larger than a bicycle.",
+      "hi": "बैलगाड़ी साइकिल से बड़ी होती है। बैलगाड़ी जानवरों से खींची जाती है और साइकिल से ज्यादा बड़ी होती है।",
+      "bn": "বলদগাড়ি সাইকেলের চেয়ে বড়। বলদগাড়ি প্রাণী দ্বারা টানা হয় এবং সাইকেল থেকে বড়।"
+    }
+  },
+  {
+    "id": "word-pond-puddle-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "word": "village pond",
+      "label": "village pond",
+      "size": "",
+      "sizeValue": 9,
+      "image": "/assets/images/village_pond.jpg"
+    },
+    "right": {
+      "word": "rain puddle",
+      "label": "rain puddle",
+      "size": "",
+      "sizeValue": 2,
+      "image": "/assets/images/rain_puddle.jpg"
+    },
+    "explanationSimple": {
+      "en": "A village pond is bigger than a rain puddle. Ponds hold a lot of water; puddles are small and shallow.",
+      "hi": "ग्राम का तालाब बारिश के गड्ढे से बड़ा होता है। तालाब में बहुत पानी रहता है; गड्ढे छोटे और उथले होते हैं।",
+      "bn": "গ্রামের পুকুর বর্ষার ছোট জলের গর্তের চেয়ে বড়। পুকুরে অনেক পানি থাকে; পুকুরা ছোট ও উথলা।"
+    }
+  },
+  {
+    "id": "word-field-garden-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "word": "rice field",
+      "label": "rice field",
+      "size": "",
+      "sizeValue": 9,
+      "image": "/assets/images/rice_field.jpg"
+    },
+    "right": {
+      "word": "kitchen garden",
+      "label": "kitchen garden",
+      "size": "",
+      "sizeValue": 4,
+      "image": "/assets/images/kitchen_garden.jpg"
+    },
+    "explanationSimple": {
+      "en": "A rice field is bigger than a kitchen garden. Fields cover more land and grow many crops; kitchen gardens are small near the house.",
+      "hi": "धान का खेत रसोई बगीचे से बड़ा होता है। खेत ज़्यादा जमीन घेरते हैं और बहुत फसल उगाते हैं; रसोई बगीचा छोटा होता है।",
+      "bn": "ধানক্ষেত রান্নাঘরের বাগান থেকে বড়। মাঠ বেশি জমি জুড়ে এবং অনেক ফসল ফলায়; রান্নাঘরের বাগান ছোট।"
+    }
+  }
+]

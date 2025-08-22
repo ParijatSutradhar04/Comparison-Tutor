@@ -75,7 +75,8 @@ src/
 ├── hooks/
 │   └── useAdaptiveEngine.ts # Core adaptive logic
 ├── data/
-│   └── questions.json   # Sample questions dataset
+│   ├── imageQuestions.json # Image-based questions dataset
+│   └── wordQuestions.json  # Word-based questions dataset
 ├── i18n/
 │   ├── en.json         # English translations
 │   └── hi.json         # Hindi translations
@@ -91,7 +92,12 @@ public/assets/          # Image assets (see below)
 
 ## 📊 Dataset Structure
 
-The `src/data/questions.json` contains 15+ sample questions with this structure:
+The application uses two separate question files in `src/data/`:
+
+- `imageQuestions.json` - Contains image-based questions (random selection)
+- `wordQuestions.json` - Contains word-based questions (sequential selection)
+
+Both files contain questions with this structure:
 
 ```json
 {

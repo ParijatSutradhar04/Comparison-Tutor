@@ -15,12 +15,39 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Serve questions data
-app.get('/api/questions', (req, res) => {
+// Serve image questions data
+app.get('/api/imageQuestions', (req, res) => {
   try {
-    const questionsPath = path.join(__dirname, '../src/data/questions.json');
+    const questionsPath = path.join(__dirname, '../src/data/imageQuestions.json');
     const questions = JSON.parse(fs.readFileSync(questionsPath, 'utf8'));
     res.json(questions);
+  } catch (error) {
+    console.error('Error loading image questions:', error);
+    res.status(500).json({ error: 'Failed to load image questions' });
+  }
+});
+
+// Serve word questions data
+app.get('/api/wordQuestions', (req, res) => {
+  try {
+    const questionsPath = path.join(__dirname, '../src/data/wordQuestions.json');
+    const questions = JSON.parse(fs.readFileSync(questionsPath, 'utf8'));
+    res.json(questions);
+  } catch (error) {
+    console.error('Error loading word questions:', error);
+    res.status(500).json({ error: 'Failed to load word questions' });
+  }
+});
+
+// Legacy endpoint for backward compatibility (serves combined data)
+app.get('/api/questions', (req, res) => {
+  try {
+    const imageQuestionsPath = path.join(__dirname, '../src/data/imageQuestions.json');
+    const wordQuestionsPath = path.join(__dirname, '../src/data/wordQuestions.json');
+    const imageQuestions = JSON.parse(fs.readFileSync(imageQuestionsPath, 'utf8'));
+    const wordQuestions = JSON.parse(fs.readFileSync(wordQuestionsPath, 'utf8'));
+    const combined = [...imageQuestions, ...wordQuestions];
+    res.json(combined);
   } catch (error) {
     console.error('Error loading questions:', error);
     res.status(500).json({ error: 'Failed to load questions' });
@@ -75,6 +102,8 @@ app.get('/api/health', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 MiniTeach API server running on http://localhost:${PORT}`);
-  console.log(`📊 Questions endpoint: http://localhost:${PORT}/api/questions`);
+  console.log(`📊 Image Questions endpoint: http://localhost:${PORT}/api/imageQuestions`);
+  console.log(`📝 Word Questions endpoint: http://localhost:${PORT}/api/wordQuestions`);
+  console.log(`📋 All Questions endpoint: http://localhost:${PORT}/api/questions`);
   console.log(`🧠 LLM stub endpoint: http://localhost:${PORT}/api/llm-stub/explain`);
 });

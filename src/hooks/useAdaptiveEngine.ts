@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
-import questionsData from '../data/questions.json'
+import imageQuestions from '../data/imageQuestions.json'
+import wordQuestions from '../data/wordQuestions.json'
 
 export type Mode = 'image-mode' | 'word-mode'
 export type ChosenSide = 'left' | 'right'
@@ -62,6 +63,28 @@ export function useAdaptiveEngine() {
   })
 
   const [recentQuestionIds, setRecentQuestionIds] = useState<string[]>([])
+  const [wordModeQuestionIndex, setWordModeQuestionIndex] = useState<number>(0)
+
+  // Separate questions by mode
+  const getQuestionsByMode = useCallback((mode: Mode) => {
+    if (mode === 'image-mode') {
+      return imageQuestions as QuestionItem[]
+    } else {
+      return wordQuestions as QuestionItem[]
+    }
+  }, [])
+
+  // Get word questions in order for sequential selection
+  const getOrderedWordQuestions = useCallback((location: string) => {
+    const wordQuestions = getQuestionsByMode('word-mode')
+    // For word questions, we want them in the EXACT order they appear in the JSON file
+    // No sorting - preserve the original file order
+    return wordQuestions.filter((q: QuestionItem) => 
+      q.mode === 'word-mode' &&
+      (q.location.includes(location) || q.location.includes('default'))
+    )
+    // No .sort() here - preserve original JSON file order
+  }, [getQuestionsByMode])
 
   // Timer effect
   useEffect(() => {
@@ -82,52 +105,80 @@ export function useAdaptiveEngine() {
 
   const nextQuestion = useCallback((studentClass: number = 3, location: string = 'India') => {
     console.log(`nextQuestion called with difficulty: ${state.difficulty}, mode: ${state.mode}, class: ${studentClass}, location: ${location}`)
-    console.log(`Current recent questions: ${recentQuestionIds.join(', ')}`)
     
-    const typedQuestions = questionsData as QuestionItem[]
+    let selectedQuestion: QuestionItem
     
-    // First, try to find questions that match exactly and aren't recently used
-    let filtered = typedQuestions.filter((q: QuestionItem) => 
-      q.mode === state.mode &&
-      q.difficulty === state.difficulty &&
-      (q.class === studentClass || q.class === 0) &&
-      (q.location.includes(location) || q.location.includes('default')) &&
-      !recentQuestionIds.includes(q.id)
-    )
-    console.log(`Exact match candidates: ${filtered.length}`)
-
-    // If no exact matches, expand to ±1 difficulty level
-    if (filtered.length === 0) {
-      filtered = typedQuestions.filter((q: QuestionItem) => 
+    if (state.mode === 'word-mode') {
+      // WORD MODE: Sequential selection
+      const orderedWordQuestions = getOrderedWordQuestions(location)
+      console.log(`Word mode: ${orderedWordQuestions.length} ordered questions available`)
+      console.log(`Word questions found:`, orderedWordQuestions.map(q => `${q.id} (diff: ${q.difficulty}, class: ${q.class})`))
+      
+      if (orderedWordQuestions.length === 0) {
+        // Fallback to any word question if no matching ones found
+        const allWordQuestions = getQuestionsByMode('word-mode')
+        selectedQuestion = allWordQuestions[wordModeQuestionIndex % allWordQuestions.length] || wordQuestions[0] as QuestionItem
+      } else {
+        // Select question based on current index (sequential order)
+        selectedQuestion = orderedWordQuestions[wordModeQuestionIndex % orderedWordQuestions.length]
+      }
+      
+      // Increment index for next word question
+      setWordModeQuestionIndex(prev => prev + 1)
+      console.log(`Selected word question: ${selectedQuestion.id} (index was: ${wordModeQuestionIndex}, now: ${wordModeQuestionIndex + 1})`)
+      
+    } else {
+      // IMAGE MODE: Random selection (existing logic)
+      const typedQuestions = imageQuestions as QuestionItem[]
+      
+      // First, try to find questions that match exactly and aren't recently used
+      let filtered = typedQuestions.filter((q: QuestionItem) => 
         q.mode === state.mode &&
-        Math.abs(q.difficulty - state.difficulty) <= 1 &&
+        q.difficulty === state.difficulty &&
         (q.class === studentClass || q.class === 0) &&
         (q.location.includes(location) || q.location.includes('default')) &&
         !recentQuestionIds.includes(q.id)
       )
-      console.log(`±1 difficulty candidates: ${filtered.length}`)
-    }
+      console.log(`Image mode: Exact match candidates: ${filtered.length}`)
 
-    // If still no matches, try any question of the same mode that hasn't been used recently
-    if (filtered.length === 0) {
-      filtered = typedQuestions.filter((q: QuestionItem) => 
-        q.mode === state.mode &&
-        !recentQuestionIds.includes(q.id)
-      )
-      console.log(`Same mode candidates: ${filtered.length}`)
-    }
+      // If no exact matches, expand to ±1 difficulty level
+      if (filtered.length === 0) {
+        filtered = typedQuestions.filter((q: QuestionItem) => 
+          q.mode === state.mode &&
+          Math.abs(q.difficulty - state.difficulty) <= 1 &&
+          (q.class === studentClass || q.class === 0) &&
+          (q.location.includes(location) || q.location.includes('default')) &&
+          !recentQuestionIds.includes(q.id)
+        )
+        console.log(`Image mode: ±1 difficulty candidates: ${filtered.length}`)
+      }
 
-    // If absolutely no unused questions, reset and try again
-    if (filtered.length === 0) {
-      console.log('No unused questions found, using any question in mode')
-      filtered = typedQuestions.filter((q: QuestionItem) => q.mode === state.mode)
-      // Reset recent IDs
-      setRecentQuestionIds([])
-    }
+      // If still no matches, try any question of the same mode that hasn't been used recently
+      if (filtered.length === 0) {
+        filtered = typedQuestions.filter((q: QuestionItem) => 
+          q.mode === state.mode &&
+          !recentQuestionIds.includes(q.id)
+        )
+        console.log(`Image mode: Same mode candidates: ${filtered.length}`)
+      }
 
-    // Select a random question from the filtered list
-    const selectedQuestion = filtered[Math.floor(Math.random() * filtered.length)] || typedQuestions[0]
-    console.log(`Selected question: ${selectedQuestion.id}, difficulty: ${selectedQuestion.difficulty}, mode: ${selectedQuestion.mode}`)
+      // If absolutely no unused questions, reset and try again
+      if (filtered.length === 0) {
+        console.log('Image mode: No unused questions found, using any question in mode')
+        filtered = typedQuestions.filter((q: QuestionItem) => q.mode === state.mode)
+        // Reset recent IDs for image mode
+        setRecentQuestionIds([])
+      }
+
+      // Select a random question from the filtered list
+      selectedQuestion = filtered[Math.floor(Math.random() * filtered.length)] || typedQuestions[0]
+      console.log(`Selected image question: ${selectedQuestion.id}, difficulty: ${selectedQuestion.difficulty}`)
+      
+      // Update recent questions for image mode only - keep last 5 questions to avoid repetition
+      const updatedRecentIds = [selectedQuestion.id, ...recentQuestionIds.slice(0, 4)]
+      console.log(`Updated recent question IDs: ${updatedRecentIds.join(', ')}`)
+      setRecentQuestionIds(updatedRecentIds)
+    }
     
     setState(prev => ({
       ...prev,
@@ -135,12 +186,7 @@ export function useAdaptiveEngine() {
       timerActive: prev.mode === 'word-mode' && !prev.showOverlay && selectedQuestion.mode === 'word-mode',
       timerSeconds: TIMER_SECONDS
     }))
-    
-    // Update recent questions - keep last 5 questions to avoid repetition
-    const updatedRecentIds = [selectedQuestion.id, ...recentQuestionIds.slice(0, 4)]
-    console.log(`Updated recent question IDs: ${updatedRecentIds.join(', ')}`)
-    setRecentQuestionIds(updatedRecentIds)
-  }, [state.difficulty, state.mode, recentQuestionIds])
+  }, [state.difficulty, state.mode, recentQuestionIds, wordModeQuestionIndex, getOrderedWordQuestions, getQuestionsByMode])
 
   const submitAnswer = useCallback((chosenSide: ChosenSide) => {
     if (!state.currentQuestion) return false
@@ -189,9 +235,12 @@ export function useAdaptiveEngine() {
       ...prev,
       showOverlay: false,
       overlayData: null,
-      mode: 'image-mode', // Return to image mode after overlay
+      // Keep current mode instead of always returning to image-mode
       difficulty: Math.max(1, prev.difficulty - 1) // Reduce difficulty
     }))
+    
+    // Only reset word mode index when actually switching away from word mode
+    // Don't reset it here since we want to maintain sequential progression
     
     // If called after a wrong answer, advance to next question
     if (shouldAdvance && studentClass && location) {
@@ -216,10 +265,17 @@ export function useAdaptiveEngine() {
       timerSeconds: TIMER_SECONDS
     })
     setRecentQuestionIds([])
+    setWordModeQuestionIndex(0) // Reset word mode index
   }, [])
 
   const switchToWordMode = useCallback(() => {
-    setState(prev => ({ ...prev, mode: 'word-mode' }))
+    setState(prev => {
+      // Only reset index if we're actually switching from a different mode
+      if (prev.mode !== 'word-mode') {
+        setWordModeQuestionIndex(0) // Reset word mode index when switching to word mode
+      }
+      return { ...prev, mode: 'word-mode' }
+    })
   }, [])
 
   const forceDifficulty = useCallback((difficulty: number) => {

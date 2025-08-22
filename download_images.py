@@ -4,8 +4,18 @@ import re
 import os
 import json
 
-with open(r"src\data\questions.json", "r", encoding="utf-8-sig") as f:
-    data = json.load(f)
+# Load both question files
+image_questions_file = r"src\data\imageQuestions.json"
+word_questions_file = r"src\data\wordQuestions.json"
+
+with open(image_questions_file, "r", encoding="utf-8-sig") as f:
+    image_data = json.load(f)
+
+with open(word_questions_file, "r", encoding="utf-8-sig") as f:
+    word_data = json.load(f)
+
+# Combine all questions for processing
+data = image_data + word_data
 
 items = []
 for item in data:
