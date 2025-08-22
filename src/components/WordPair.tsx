@@ -4,10 +4,9 @@ import { QuestionItem, ChosenSide } from '../hooks/useAdaptiveEngine'
 interface WordPairProps {
   question: QuestionItem
   onAnswer: (side: ChosenSide) => void
-  showTimer: boolean
 }
 
-export default function WordPair({ question, onAnswer, showTimer }: WordPairProps) {
+export default function WordPair({ question, onAnswer }: WordPairProps) {
   const [selectedSide, setSelectedSide] = useState<ChosenSide | null>(null)
   const [showFeedback, setShowFeedback] = useState(false)
 
