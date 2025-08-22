@@ -137,7 +137,6 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
             <WordPair
               question={engine.currentQuestion}
               onAnswer={handleAnswer}
-              showTimer={engine.timerActive}
             />
           )}
         </div>
