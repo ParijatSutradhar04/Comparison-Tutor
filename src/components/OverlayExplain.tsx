@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { QuestionItem } from '../hooks/useAdaptiveEngine'
 import { useAppContext } from '../contexts/AppContext'
 import { explainSimple } from '../utils/explain.ts'
@@ -10,6 +11,22 @@ interface OverlayExplainProps {
 
 export default function OverlayExplain({ data, onClose, language }: OverlayExplainProps) {
   const { strings } = useAppContext()
+  const [timeLeft, setTimeLeft] = useState(15) // 15 seconds for image questions
+
+  // Auto-close timer for image questions only
+  useEffect(() => {
+    if (data.mode === 'image-mode') {
+      if (timeLeft > 0) {
+        const timer = setTimeout(() => {
+          setTimeLeft(timeLeft - 1)
+        }, 1000)
+        return () => clearTimeout(timer)
+      } else {
+        // Time's up, auto-close
+        onClose()
+      }
+    }
+  }, [timeLeft, data.mode, onClose])
 
   const correctSide = data.left.sizeValue > data.right.sizeValue ? 'left' : 'right'
   const correctItem = correctSide === 'left' ? data.left : data.right
@@ -76,47 +93,27 @@ export default function OverlayExplain({ data, onClose, language }: OverlayExpla
     )
   }
   
-  // Generate placeholder for the correct item with emphasis
-  const generateEmphasizedPlaceholder = (count: number, label: string) => {
-    const items = Array.from({ length: Math.min(count, 10) }, (_, i) => i)
-    
-    return (
-      <div className="pulse-emphasis">
-        <svg width="200" height="200" viewBox="0 0 200 200" className="border-4 border-success rounded-lg">
-          <rect width="200" height="200" fill="#dcfce7" />
-          <text x="100" y="25" textAnchor="middle" className="fill-success text-lg font-bold">
-            {count} {label}
-          </text>
-          {items.map((_, index) => {
-            const row = Math.floor(index / 5)
-            const col = index % 5
-            const x = 25 + col * 30
-            const y = 40 + row * 30
-            
-            return (
-              <circle
-                key={index}
-                cx={x}
-                cy={y}
-                r="12"
-                fill="#22c55e"
-                opacity="0.8"
-              />
-            )
-          })}
-          {count > 10 && (
-            <text x="100" y="190" textAnchor="middle" className="fill-success text-sm font-medium">
-              +{count - 10} more
-            </text>
-          )}
-        </svg>
-      </div>
-    )
-  }
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+        {/* Close button (X) in top-right corner */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors z-10"
+          title="Close"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+
+        {/* Timer display for image questions */}
+        {data.mode === 'image-mode' && (
+          <div className="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+            Auto-close in {timeLeft}s
+          </div>
+        )}
+
         <div className="p-6">
           {/* Header */}
           <div className="text-center mb-6">
@@ -128,30 +125,24 @@ export default function OverlayExplain({ data, onClose, language }: OverlayExpla
             </p>
           </div>
 
-          {/* Visual Explanation - Show images for word-mode, dots for image-mode */}
-          {data.mode === 'word-mode' ? (
-            <div className="mb-6">              
-              {/* Images side by side for word-mode */}
-              <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
-                {renderObjectImage(data.left, correctSide === 'left')}
-                {renderObjectImage(data.right, correctSide === 'right')}
-              </div>
-              <div className="text-center mt-4">
-                <p className="text-sm text-gray-600">
-                  ✨ The <strong>{correctItem.word || correctItem.label}</strong> is larger!
-                </p>
-              </div>
+          {/* Visual Explanation - Show images for both word-mode and image-mode */}
+          <div className="mb-6">              
+            {/* Images side by side for both modes */}
+            <div className="flex flex-col lg:flex-row gap-6 justify-center items-center">
+              {renderObjectImage(data.left, correctSide === 'left')}
+              {renderObjectImage(data.right, correctSide === 'right')}
             </div>
-          ) : (
-            <div className="flex justify-center mb-6">
-              {generateEmphasizedPlaceholder(correctItem.sizeValue, correctItem.label)}
+            <div className="text-center mt-4">
+              <p className="text-sm text-gray-600">
+                ✨ The <strong>{correctItem.word || correctItem.label}</strong> is larger!
+              </p>
             </div>
-          )}
+          </div>
 
           {/* Text Explanation */}
           <div className="bg-blue-50 rounded-lg p-4 mb-6">
             <p className="text-lg text-center font-medium text-gray-800">
-              {explanation}
+              {data.explanationSimple?.[language] || explanation}
             </p>
           </div>
 

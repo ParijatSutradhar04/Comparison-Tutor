@@ -116,7 +116,7 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         {/* Left Side */}
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Left</h3>
           <button
             onClick={() => handleClick('left')}
@@ -133,7 +133,7 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
         </div>
 
         {/* Right Side */}
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Right</h3>
           <button
             onClick={() => handleClick('right')}

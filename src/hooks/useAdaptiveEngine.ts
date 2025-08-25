@@ -211,9 +211,9 @@ export function useAdaptiveEngine() {
         ? 'word-mode' 
         : prev.mode,
       timerActive: false, // Always stop timer after answering
-      // Show overlay for incorrect answers in word mode, but only if current question is also word-mode
-      showOverlay: !correct && state.mode === 'word-mode' && state.currentQuestion?.mode === 'word-mode',
-      overlayData: (!correct && state.mode === 'word-mode' && state.currentQuestion?.mode === 'word-mode') ? state.currentQuestion : prev.overlayData
+      // Show overlay for incorrect answers in both image and word mode
+      showOverlay: !correct,
+      overlayData: !correct ? state.currentQuestion : prev.overlayData
     }))
     
     return correct

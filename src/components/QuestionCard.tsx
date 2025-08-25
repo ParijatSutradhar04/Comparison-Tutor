@@ -45,8 +45,8 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
     }
     
     // Only advance to next question if we won't show overlay
-    // In word-mode, wrong answers show overlay and should not auto-advance
-    const willShowOverlay = !isCorrect && engine.mode === 'word-mode'
+    // Now both image-mode and word-mode show overlays for wrong answers
+    const willShowOverlay = !isCorrect
     
     if (!willShowOverlay) {
       // Different delays based on mode and correctness for better UX

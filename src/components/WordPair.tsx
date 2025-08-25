@@ -51,7 +51,7 @@ export default function WordPair({ question, onAnswer }: WordPairProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {/* Left Side */}
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <h3 className="text-lg font-semibold mb-4 text-gray-700">Left</h3>
         <button
           onClick={() => handleClick('left')}
@@ -68,7 +68,7 @@ export default function WordPair({ question, onAnswer }: WordPairProps) {
       </div>
 
       {/* Right Side */}
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <h3 className="text-lg font-semibold mb-4 text-gray-700">Right</h3>
         <button
           onClick={() => handleClick('right')}
