@@ -12,7 +12,7 @@ export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
     name: '',
     class: 3,
     nativeLanguage: 'en',
-    location: 'India'
+    location: 'Maharashtra'
   })
   
   const [funMode, setFunMode] = useState(true)
@@ -24,11 +24,37 @@ export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
   ]
 
   const locations = [
-    'India',
-    'United States', 
-    'United Kingdom',
-    'Canada',
-    'Australia'
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+    'Delhi',
+    'Jammu and Kashmir',
+    'Ladakh'
   ]
 
   const handleSubmit = (e: React.FormEvent) => {
