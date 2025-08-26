@@ -132,6 +132,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
             <ImagePair
               question={engine.currentQuestion}
               onAnswer={handleAnswer}
+              difficulty={engine.difficulty}
             />
           ) : (
             <WordPair

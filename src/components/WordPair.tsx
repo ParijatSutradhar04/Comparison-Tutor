@@ -61,9 +61,7 @@ export default function WordPair({ question, onAnswer }: WordPairProps) {
           <div className="text-2xl font-bold capitalize text-blue-600">
             {question.left.word || question.left.label || 'Missing Word'}
           </div>
-          <div className="text-sm text-gray-600">
-            ({question.left.size})
-          </div>
+          
         </button>
       </div>
 
@@ -78,9 +76,7 @@ export default function WordPair({ question, onAnswer }: WordPairProps) {
           <div className="text-2xl font-bold capitalize text-blue-600">
             {question.right.word || question.right.label || 'Missing Word'}
           </div>
-          <div className="text-sm text-gray-600">
-            ({question.right.size})
-          </div>
+          
         </button>
       </div>
     </div>

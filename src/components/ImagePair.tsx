@@ -4,13 +4,17 @@ import { QuestionItem, ChosenSide } from '../hooks/useAdaptiveEngine'
 interface ImagePairProps {
   question: QuestionItem
   onAnswer: (side: ChosenSide) => void
+  difficulty?: number // Add difficulty prop to control label visibility
 }
 
-export default function ImagePair({ question, onAnswer }: ImagePairProps) {
+export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImagePairProps) {
   const [selectedSide, setSelectedSide] = useState<ChosenSide | null>(null)
   const [showFeedback, setShowFeedback] = useState(false)
 
   const correctSide: ChosenSide = question.left.sizeValue > question.right.sizeValue ? 'left' : 'right'
+  
+  // Show labels only for difficulty 1-2, hide for difficulty 3+
+  const showLabels = difficulty <= 2
 
   const handleClick = (side: ChosenSide) => {
     if (selectedSide) return // Already answered
@@ -78,9 +82,12 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
     return (
       <svg width="120" height="120" viewBox="0 0 120 120" className="border-2 border-gray-300 rounded-lg mx-auto">
         <rect width="120" height="120" fill="#f3f4f6" />
-        <text x="60" y="15" textAnchor="middle" className="fill-gray-600 text-xs font-medium">
-          {size} {label}
-        </text>
+        {/* Show label only for difficulty 1-2 */}
+        {showLabels && (
+          <text x="60" y="15" textAnchor="middle" className="fill-gray-600 text-xs font-medium">
+            {size} {label}
+          </text>
+        )}
         {/* Single representation scaled by size */}
         <circle
           cx="60"
@@ -99,13 +106,12 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
   // Generate placeholder HTML string for error fallback
   const generatePlaceholderHTML = (sizeValue: number, label: string, size: string) => {
     const circleSize = size === 'large' ? 12 : size === 'medium' ? 8 : 4
+    const labelHTML = showLabels ? `<text x="60" y="15" text-anchor="middle" class="fill-gray-600 text-xs font-medium">${size} ${label}</text>` : ''
     
     return `
       <svg width="120" height="120" viewBox="0 0 120 120" class="border-2 border-gray-300 rounded-lg mx-auto">
         <rect width="120" height="120" fill="#f3f4f6" />
-        <text x="60" y="15" text-anchor="middle" class="fill-gray-600 text-xs font-medium">
-          ${size} ${label}
-        </text>
+        ${labelHTML}
         <circle cx="60" cy="60" r="${circleSize}" fill="#6366f1" opacity="0.8" />
         <text x="60" y="110" text-anchor="middle" class="fill-gray-500 text-xs">Size: ${sizeValue}/10</text>
       </svg>
@@ -126,9 +132,12 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
             <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
               {renderImage(question.left.src, question.left.sizeValue, question.left.label, question.left.size)}
             </div>
-            <div className="text-2xl font-black text-gray-800 capitalize">
-              {question.left.size} {question.left.label}
-            </div>
+            {/* Show label only for difficulty 1-2 */}
+            {showLabels && (
+              <div className="text-2xl font-black text-gray-800 capitalize">
+                {question.left.size} {question.left.label}
+              </div>
+            )}
           </button>
         </div>
 
@@ -143,9 +152,12 @@ export default function ImagePair({ question, onAnswer }: ImagePairProps) {
             <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
               {renderImage(question.right.src, question.right.sizeValue, question.right.label, question.right.size)}
             </div>
-            <div className="text-2xl font-black text-gray-800 capitalize">
-              {question.right.size} {question.right.label}
-            </div>
+            {/* Show label only for difficulty 1-2 */}
+            {showLabels && (
+              <div className="text-2xl font-black text-gray-800 capitalize">
+                {question.right.size} {question.right.label}
+              </div>
+            )}
           </button>
         </div>
       </div>

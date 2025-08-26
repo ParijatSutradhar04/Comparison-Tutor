@@ -79,9 +79,7 @@ export default function OverlayExplain({ data, onClose, language }: OverlayExpla
             <div className="text-lg font-bold text-gray-800 capitalize">
               {objectName}
             </div>
-            <div className="text-sm text-gray-600">
-              ({object.size})
-            </div>
+            
             {isCorrect && (
               <div className="text-green-600 font-bold text-sm mt-2 px-2 py-1 bg-green-100 rounded-full">
                 ✨ LARGER ✨
