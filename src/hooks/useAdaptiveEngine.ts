@@ -268,63 +268,12 @@ export function useAdaptiveEngine() {
     setWordModeQuestionIndex(0) // Reset word mode index
   }, [])
 
-  const switchToWordMode = useCallback(() => {
-    setState(prev => {
-      // Only reset index if we're actually switching from a different mode
-      if (prev.mode !== 'word-mode') {
-        setWordModeQuestionIndex(0) // Reset word mode index when switching to word mode
-      }
-      return { ...prev, mode: 'word-mode' }
-    })
-  }, [])
-
-  const forceDifficulty = useCallback((difficulty: number) => {
-    setState(prev => ({ ...prev, difficulty: Math.max(1, Math.min(5, difficulty)) }))
-  }, [])
-
-  // Demo sequence
-  const runDemoSequence = useCallback(async (studentClass: number, location: string) => {
-    // Reset first
-    reset()
-    
-    // Simulate 3 correct image questions
-    for (let i = 0; i < 3; i++) {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      nextQuestion(studentClass, location)
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      if (state.currentQuestion) {
-        const correctSide = state.currentQuestion.left.sizeValue > state.currentQuestion.right.sizeValue ? 'left' : 'right'
-        submitAnswer(correctSide)
-      }
-    }
-    
-    // Should now be in word mode
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    nextQuestion(studentClass, location)
-    
-    // Correct answer in word mode
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    if (state.currentQuestion) {
-      const correctSide = state.currentQuestion.left.sizeValue > state.currentQuestion.right.sizeValue ? 'left' : 'right'
-      submitAnswer(correctSide)
-    }
-    
-    // Next word question - simulate timeout
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    nextQuestion(studentClass, location)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    timerExpired()
-  }, [nextQuestion, submitAnswer, timerExpired, reset, state.currentQuestion])
-
   return {
     ...state,
     nextQuestion,
     submitAnswer,
     timerExpired,
     closeOverlay,
-    reset,
-    switchToWordMode,
-    forceDifficulty,
-    runDemoSequence
+    reset
   }
 }

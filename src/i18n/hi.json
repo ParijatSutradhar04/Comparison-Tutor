@@ -17,12 +17,5 @@
   "questionsAsked": "पूछे गए प्रश्न",
   "correctPercent": "सही %",
   "streak": "लगातार सही",
-  "understanding": "समझ की प्रगति",
-  "demoControls": "डेमो नियंत्रण",
-  "forceDifficulty": "कठिनाई सेट करें",
-  "switchToWordMode": "शब्द मोड पर जाएं",
-  "resetProgress": "प्रगति रीसेट करें",
-  "demoSequence": "डेमो अनुक्रम",
-  "demoSequenceDesc": "प्रस्तुतियों के लिए स्वचालित डेमो",
-  "runDemo": "डेमो अनुक्रम चलाएं"
+  "understanding": "समझ की प्रगति"
 }

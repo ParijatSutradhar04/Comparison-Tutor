@@ -17,12 +17,5 @@
   "questionsAsked": "জিজ্ঞাসিত প্রশ্ন",
   "correctPercent": "সঠিক %",
   "streak": "ধারাবাহিক সঠিক",
-  "understanding": "বোঝার অগ্রগতি",
-  "demoControls": "ডেমো নিয়ন্ত্রণ",
-  "forceDifficulty": "কঠিনতা সেট করুন",
-  "switchToWordMode": "শব্দ মোডে যান",
-  "resetProgress": "অগ্রগতি রিসেট করুন",
-  "demoSequence": "ডেমো ক্রম",
-  "demoSequenceDesc": "উপস্থাপনার জন্য স্বয়ংক্রিয় ডেমো",
-  "runDemo": "ডেমো ক্রম চালান"
+  "understanding": "বোঝার অগ্রগতি"
 }

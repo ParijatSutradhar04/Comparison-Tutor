@@ -18,12 +18,5 @@
   "questionsAsked": "Questions Asked",
   "correctPercent": "Correct %",
   "streak": "Streak",
-  "understanding": "Understanding Progress",
-  "demoControls": "Demo Controls",
-  "forceDifficulty": "Force Difficulty",
-  "switchToWordMode": "Switch to Word Mode",
-  "resetProgress": "Reset Progress",
-  "demoSequence": "Demo Sequence", 
-  "demoSequenceDesc": "Automated demo for presentations",
-  "runDemo": "Run Demo Sequence"
+  "understanding": "Understanding Progress"
 }

@@ -4,14 +4,12 @@ import OnboardingForm from './components/OnboardingForm'
 import QuestionCard from './components/QuestionCard'
 import OverlayExplain from './components/OverlayExplain'
 import MetricsPanel from './components/MetricsPanel'
-import DemoControls from './components/DemoControls'
 import { useAdaptiveEngine } from './hooks/useAdaptiveEngine'
 import AppContext, { StudentInfo } from './contexts/AppContext'
 
 function App() {
   const [studentInfo, setStudentInfo] = useState<StudentInfo | null>(null)
   const [strings, setStrings] = useState<Record<string, string>>({})
-  const [showDemoControls, setShowDemoControls] = useState(false)
 
   const engine = useAdaptiveEngine()
 
@@ -100,13 +98,6 @@ function App() {
                 </div>
                 <div className="ml-6 space-y-4">
                   <MetricsPanel engine={engine} />
-                  <button
-                    onClick={() => setShowDemoControls(!showDemoControls)}
-                    className="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition-colors"
-                  >
-                    {showDemoControls ? 'Hide' : 'Show'} Demo Controls
-                  </button>
-                  {showDemoControls && <DemoControls engine={engine} />}
                 </div>
               </div>
             </div>

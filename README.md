@@ -70,8 +70,7 @@ src/
 │   ├── WordPair.tsx     # Word-based question component
 │   ├── OverlayExplain.tsx # Explanation modal
 │   ├── Timer.tsx        # Countdown timer component
-│   ├── MetricsPanel.tsx # Performance metrics display
-│   └── DemoControls.tsx # Presenter controls
+│   └── MetricsPanel.tsx # Performance metrics display
 ├── hooks/
 │   └── useAdaptiveEngine.ts # Core adaptive logic
 ├── data/
@@ -152,20 +151,7 @@ village-pond.png, rain-puddle.png
 rice-field.png, kitchen-garden.png
 ```
 
-## 🎮 Demo Controls (for Presentations)
-
-The right panel includes presenter controls:
-
-- **Force Difficulty**: Set specific difficulty level (1-5)
-- **Switch to Word Mode**: Skip to word-based questions
-- **Reset Progress**: Clear all student progress
-- **Run Demo Sequence**: Automated demo showing:
-  1. 3 correct image questions (difficulty increases)
-  2. Switch to word mode
-  3. One correct word question
-  4. Timer expiration → explanation overlay
-
-## 🎤 Pitch Talking Points
+##  Pitch Talking Points
 
 When demonstrating to stakeholders:
 
