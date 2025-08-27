@@ -19,6 +19,24 @@ interface QuestionCardProps {
 export default function QuestionCard({ engine, studentInfo }: QuestionCardProps) {
   const { strings } = useAppContext()
   const [isProcessing, setIsProcessing] = useState(false)
+  const [isPortrait, setIsPortrait] = useState(false)
+
+  // Check if screen is in portrait mode
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth)
+    }
+    
+    checkOrientation()
+    window.addEventListener('resize', checkOrientation)
+    
+    return () => window.removeEventListener('resize', checkOrientation)
+  }, [])
+
+  // Get instruction text based on orientation
+  const getInstructionText = () => {
+    return isPortrait ? 'Choose Top or Bottom' : 'Choose Left or Right'
+  }
 
   useEffect(() => {
     if (!engine.currentQuestion) {
@@ -128,7 +146,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
             {strings.whichHasMore || 'Which is bigger?'}
           </h2>
           <p className="text-lg text-indigo-600 font-semibold">
-            {strings.chooseLeftOrRight || 'Choose Left or Right'}
+            {getInstructionText()}
           </p>
         </div>
 

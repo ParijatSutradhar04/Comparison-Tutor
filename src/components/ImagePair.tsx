@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { QuestionItem, ChosenSide } from '../hooks/useAdaptiveEngine'
 
 interface ImagePairProps {
@@ -10,6 +10,19 @@ interface ImagePairProps {
 export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImagePairProps) {
   const [selectedSide, setSelectedSide] = useState<ChosenSide | null>(null)
   const [showFeedback, setShowFeedback] = useState(false)
+  const [isPortrait, setIsPortrait] = useState(false)
+
+  // Check if screen is in portrait mode
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth)
+    }
+    
+    checkOrientation()
+    window.addEventListener('resize', checkOrientation)
+    
+    return () => window.removeEventListener('resize', checkOrientation)
+  }, [])
 
   const correctSide: ChosenSide = question.left.sizeValue > question.right.sizeValue ? 'left' : 'right'
   
@@ -17,6 +30,22 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
   const showLabels = difficulty === 1
   // Show images for difficulty 1-3 (all image questions)
   const showImages = true
+
+  // Get orientation-aware labels
+  const getPositionLabels = () => {
+    if (isPortrait) {
+      return { left: 'Top', right: 'Bottom' }
+    }
+    return { left: 'Left', right: 'Right' }
+  }
+
+  // Get orientation-aware button texts
+  const getButtonTexts = () => {
+    if (isPortrait) {
+      return { left: 'Choose Top', right: 'Choose Bottom' }
+    }
+    return { left: 'Choose Left', right: 'Choose Right' }
+  }
 
   const handleClick = (side: ChosenSide) => {
     if (selectedSide) return // Already answered
@@ -123,9 +152,9 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        {/* Left Side */}
+        {/* Left/Top Side */}
         <div className="flex flex-col items-center">
-          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Left</h3>
+          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">{getPositionLabels().left}</h3>
           <button
             onClick={() => handleClick('left')}
             className={getButtonClass('left')}
@@ -150,9 +179,9 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
           </button>
         </div>
 
-        {/* Right Side */}
+        {/* Right/Bottom Side */}
         <div className="flex flex-col items-center">
-          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">Right</h3>
+          <h3 className="text-2xl font-bold mb-6 text-indigo-800 font-display">{getPositionLabels().right}</h3>
           <button
             onClick={() => handleClick('right')}
             className={getButtonClass('right')}
@@ -185,13 +214,13 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
             onClick={() => handleClick('left')}
             className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-black text-xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            Choose Left
+            {getButtonTexts().left}
           </button>
           <button
             onClick={() => handleClick('right')}
             className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-black text-xl px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            Choose Right
+            {getButtonTexts().right}
           </button>
         </div>
       )}
