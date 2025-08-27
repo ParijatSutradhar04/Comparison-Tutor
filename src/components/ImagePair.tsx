@@ -13,8 +13,10 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
 
   const correctSide: ChosenSide = question.left.sizeValue > question.right.sizeValue ? 'left' : 'right'
   
-  // Show labels only for difficulty 1-2, hide for difficulty 3+
-  const showLabels = difficulty <= 2
+  // Show labels only for difficulty 1, hide for difficulty 2-3
+  const showLabels = difficulty === 1
+  // Show images for difficulty 1-3 (all image questions)
+  const showImages = true
 
   const handleClick = (side: ChosenSide) => {
     if (selectedSide) return // Already answered
@@ -130,12 +132,19 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
             disabled={selectedSide !== null}
           >
             <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
-              {renderImage(question.left.src, question.left.sizeValue, question.left.label, question.left.size)}
+              {showImages && (
+                renderImage(question.left.src, question.left.sizeValue, question.left.label, question.left.size)
+              )}
             </div>
-            {/* Show label only for difficulty 1-2 */}
+            {/* Show label only for difficulty 1-2, or show level text for difficulty 5 */}
             {showLabels && (
               <div className="text-2xl font-black text-gray-800 capitalize">
                 {question.left.size} {question.left.label}
+              </div>
+            )}
+            {!showImages && (
+              <div className="text-xl font-bold text-indigo-600">
+                {question.left.label}
               </div>
             )}
           </button>
@@ -150,12 +159,19 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
             disabled={selectedSide !== null}
           >
             <div className="bg-sky-50 rounded-2xl p-4 mb-4 border-2 border-sky-200">
-              {renderImage(question.right.src, question.right.sizeValue, question.right.label, question.right.size)}
+              {showImages && (
+                renderImage(question.right.src, question.right.sizeValue, question.right.label, question.right.size)
+              )}
             </div>
-            {/* Show label only for difficulty 1-2 */}
+            {/* Show label only for difficulty 1-2, or show level text for difficulty 5 */}
             {showLabels && (
               <div className="text-2xl font-black text-gray-800 capitalize">
                 {question.right.size} {question.right.label}
+              </div>
+            )}
+            {!showImages && (
+              <div className="text-xl font-bold text-indigo-600">
+                {question.right.label}
               </div>
             )}
           </button>

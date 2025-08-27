@@ -10,12 +10,24 @@ export default function Timer({ seconds, onExpired }: TimerProps) {
 
   useEffect(() => {
     setTimeLeft(seconds)
+    console.log(`⏱️ TIMER: Reset to ${seconds} seconds`)
   }, [seconds])
 
   useEffect(() => {
     if (timeLeft <= 0) {
+      console.log(`⏱️ TIMER: EXPIRED!`)
       onExpired()
+      return
     }
+
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        console.log(`⏱️ TIMER: Counting down ${prev} -> ${prev - 1}`)
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
   }, [timeLeft, onExpired])
 
   const getColorClass = () => {

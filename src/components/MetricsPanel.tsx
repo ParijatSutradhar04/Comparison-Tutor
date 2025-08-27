@@ -29,7 +29,7 @@ export default function MetricsPanel({ engine }: MetricsPanelProps) {
           <div className="flex justify-between items-center">
             <span className="text-purple-700 font-semibold">{strings.mode || 'Mode'}:</span>
             <span className="font-black text-purple-800 capitalize">
-              {engine.mode.replace('-', ' ')}
+              {engine.difficulty <= 3 ? 'Image Mode' : 'Word Mode'}
             </span>
           </div>
         </div>
@@ -70,9 +70,12 @@ export default function MetricsPanel({ engine }: MetricsPanelProps) {
           <div className="w-full bg-gray-200 rounded-full h-4 border-2 border-indigo-300">
             <div 
               className={`bg-gradient-to-r from-indigo-400 to-purple-500 h-full rounded-full transition-all duration-500 relative overflow-hidden ${
-                engine.consecutiveCorrect >= 3 ? 'w-full' :
-                engine.consecutiveCorrect >= 2 ? 'w-2/3' :
-                engine.consecutiveCorrect >= 1 ? 'w-1/3' : 'w-0'
+                engine.difficulty === 5 ? 'w-4/5' :
+                engine.difficulty === 4 ? 'w-3/5' :
+                engine.difficulty === 3 ? 'w-2/5' :
+                engine.difficulty === 2 ? 'w-1/5' :
+                engine.difficulty === 1 ? 'w-0'   :
+                'w-full'
               }`}
             >
               <div className="absolute inset-0 bg-white/20 animate-pulse"></div>

@@ -214,5 +214,29 @@
       "hi": "पक्का मकान छोटी झोपड़ी से बड़ा होता है। पक्के घर मजबूत होते हैं और उनमें ज्यादा जगह होती है।",
       "bn": "পাকা বাড়ি ছোট কুটিরের চেয়ে বড়। পাকা বাড়ি শক্ত ও বেশি জায়গা থাকে।"
     }
+  },
+  {
+    "id": "img-buffalo-goat-1",
+    "mode": "image-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["India", "default"],
+    "left": {
+      "src": "/assets/images/water_buffalo.jpg",
+      "label": "water buffalo",
+      "size": "",
+      "sizeValue": 9
+    },
+    "right": {
+      "src": "/assets/images/goat.jpg",
+      "label": "goat",
+      "size": "",
+      "sizeValue": 4
+    },
+    "explanationSimple": {
+      "en": "A water buffalo is much bigger than a goat. Buffaloes are large animals used for farming, while goats are smaller farm animals.",
+      "hi": "भैंस बकरी से काफी बड़ी होती है। भैंसें बड़े जानवर हैं जो खेती के काम आती हैं, जबकि बकरी छोटे पशु हैं।",
+      "bn": "মহিষ ছাগলের চেয়ে অনেক বড়। মহিষ বড় জন্তু যা কৃষিকাজে ব্যবহৃত হয়, আর ছাগল ছোট পশু।"
+    }
   }
 ]

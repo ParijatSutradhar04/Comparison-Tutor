@@ -26,6 +26,21 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
     }
   }, [engine, studentInfo])
 
+  // Force reload question when difficulty crosses mode boundary (3↔4)
+  useEffect(() => {
+    if (engine.currentQuestion) {
+      const expectedMode = engine.difficulty >= 4 ? 'word-mode' : 'image-mode'
+      if (engine.currentQuestion.mode !== expectedMode) {
+        console.log('Mode mismatch detected, reloading question:', {
+          difficulty: engine.difficulty,
+          expectedMode,
+          currentQuestionMode: engine.currentQuestion.mode
+        })
+        engine.nextQuestion(studentInfo.class, studentInfo.location)
+      }
+    }
+  }, [engine.difficulty, engine.currentQuestion, engine, studentInfo])
+
   if (!engine.currentQuestion) {
     return (
       <div className="card text-center">
@@ -44,31 +59,19 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
       fireStarConfetti()
     }
     
-    // Only advance to next question if we won't show overlay
-    // Now both image-mode and word-mode show overlays for wrong answers
+    // Only manually advance if we'll show overlay
+    // For correct answers, the auto-advance mechanism will handle it
     const willShowOverlay = !isCorrect
     
-    if (!willShowOverlay) {
-      // Different delays based on mode and correctness for better UX
-      let delay = 300 // Default quick delay for image mode
-      
-      if (engine.mode === 'word-mode') {
-        // In word mode, give a bit more time to see the feedback
-        delay = isCorrect ? 1000 : 300
-      }
-      
-      // Give extra time for confetti if it was triggered
-      if (isCorrect && studentInfo.funMode) {
-        delay = Math.max(delay, 800) // Ensure at least 800ms to see confetti
-      }
-      
-      setTimeout(() => {
-        engine.nextQuestion(studentInfo.class, studentInfo.location)
-        setIsProcessing(false) // Clear processing state
-      }, delay)
-    } else {
+    if (willShowOverlay) {
       // For overlay cases, clear processing immediately since overlay handles the flow
       setIsProcessing(false)
+    } else {
+      // For correct answers, the auto-advance will handle progression
+      // Just clear processing after a short delay for UX
+      setTimeout(() => {
+        setIsProcessing(false)
+      }, isCorrect && studentInfo.funMode ? 800 : 300)
     }
   }
 
@@ -96,25 +99,28 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-4 mb-6">
             <span className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
-              engine.mode === 'image-mode' 
+              engine.difficulty <= 3 
                 ? 'bg-blue-500 text-white' 
                 : 'bg-purple-500 text-white'
             }`}>
-              {engine.mode === 'image-mode' 
+              {engine.difficulty <= 3 
                 ? (strings.imageMode || 'Image Mode')
                 : (strings.wordMode || 'Word Mode')
               }
             </span>
             
             <span className="bg-gradient-to-r from-orange-400 to-pink-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-              {strings.difficulty || 'Difficulty'} {engine.difficulty}/5
+              {`${strings.difficulty || 'Difficulty'} ${engine.difficulty}/5`}
             </span>
 
-            {engine.mode === 'word-mode' && engine.timerActive && (
-              <Timer 
-                seconds={engine.timerSeconds}
-                onExpired={engine.timerExpired}
-              />
+            {engine.difficulty === 5 && engine.timerActive && (
+              <>
+                {console.log(`🖥️ QUESTIONCARD: Showing timer - difficulty=${engine.difficulty}, timerActive=${engine.timerActive}, timerSeconds=${engine.timerSeconds}`)}
+                <Timer 
+                  seconds={engine.timerSeconds}
+                  onExpired={engine.timerExpired}
+                />
+              </>
             )}
           </div>
 
@@ -128,17 +134,28 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
 
         {/* Question content */}
         <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6">
-          {engine.mode === 'image-mode' ? (
+          {engine.difficulty <= 3 && engine.currentQuestion?.mode === 'image-mode' ? (
             <ImagePair
               question={engine.currentQuestion}
               onAnswer={handleAnswer}
               difficulty={engine.difficulty}
             />
-          ) : (
+          ) : engine.difficulty >= 4 && engine.currentQuestion?.mode === 'word-mode' ? (
             <WordPair
               question={engine.currentQuestion}
               onAnswer={handleAnswer}
             />
+          ) : (
+            <div className="text-center text-gray-500 p-8">
+              <p>Question mode mismatch detected</p>
+              <p>Difficulty: {engine.difficulty}, Question Mode: {engine.currentQuestion?.mode}</p>
+              <button 
+                onClick={() => engine.nextQuestion(studentInfo.class, studentInfo.location)}
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+              >
+                Load Next Question
+              </button>
+            </div>
           )}
         </div>
       </div>

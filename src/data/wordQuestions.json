@@ -2,7 +2,7 @@
   {
     "id": "word-camel-rabbit-1",
     "mode": "word-mode",
-    "difficulty": 2,
+    "difficulty": 4,
     "class": 2,
     "location": ["India", "default"],
     "left": {
@@ -28,7 +28,7 @@
   {
     "id": "word-coconut-date-1",
     "mode": "word-mode",
-    "difficulty": 3,
+    "difficulty": 4,
     "class": 3,
     "location": ["India", "default"],
     "left": {
