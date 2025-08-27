@@ -11,7 +11,7 @@ function App() {
   const [studentInfo, setStudentInfo] = useState<StudentInfo | null>(null)
   const [strings, setStrings] = useState<Record<string, string>>({})
 
-  const engine = useAdaptiveEngine()
+  const engine = useAdaptiveEngine(studentInfo ? { class: studentInfo.class, location: studentInfo.location } : undefined)
 
   useEffect(() => {
     // Clear any previous student info to always start fresh

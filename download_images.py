@@ -4,30 +4,39 @@ import re
 import os
 import json
 
-# Load both question files
-image_questions_file = r"src\data\imageQuestions.json"
-word_questions_file = r"src\data\wordQuestions.json"
+# # Load both question files
+# image_questions_file = r"src\data\imageQuestions.json"
+# word_questions_file = r"src\data\wordQuestions.json"
 
-with open(image_questions_file, "r", encoding="utf-8-sig") as f:
-    image_data = json.load(f)
+# with open(image_questions_file, "r", encoding="utf-8-sig") as f:
+#     image_data = json.load(f)
 
-with open(word_questions_file, "r", encoding="utf-8-sig") as f:
-    word_data = json.load(f)
+# with open(word_questions_file, "r", encoding="utf-8-sig") as f:
+#     word_data = json.load(f)
 
-# Combine all questions for processing
-data = image_data + word_data
+# # Combine all questions for processing
+# data = image_data + word_data
 
-items = []
-for item in data:
-    if "left" in item and "label" in item["left"]:
-        items.append(item["left"]["label"])
-    if "right" in item and "label" in item["right"]:
-        items.append(item["right"]["label"])
+# items = []
+# for item in data:
+#     if "left" in item and "label" in item["left"]:
+#         items.append(item["left"]["label"])
+#     if "right" in item and "label" in item["right"]:
+#         items.append(item["right"]["label"])
 
-print(items)
+# print(items)
+
+items = ["telephone tower", "qutub minar", "howrah bridge", "normal bridge", "roshogolla", "bondi"]
 
 # Make downloads folder if not present
-os.makedirs("images", exist_ok=True)
+folder = os.path.normpath(r"public\assets\images")
+if os.path.exists(folder):
+    print(f"Folder exists: {folder}")
+else:
+    print(f"Folder not found: {folder}")
+print("Create or verify the folder now if needed. Press Enter to continue.")
+input()
+os.makedirs(folder, exist_ok=True)
 
 # Fake browser headers (helps bypass some blocking)
 headers = {
@@ -48,7 +57,7 @@ with DDGS() as ddgs:
                 url = results[0]["image"]
                 response = requests.get(url, headers=headers, timeout=15)
                 if response.status_code == 200:
-                    filename = f"images/{safe_filename(item)}.jpg"
+                    filename = f"public/assets/images/{safe_filename(item)}.jpg"
                     with open(filename, "wb") as f:
                         f.write(response.content)
                     print(f"✅ Downloaded: {item}")

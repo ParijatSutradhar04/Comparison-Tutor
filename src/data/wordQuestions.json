@@ -78,6 +78,58 @@
     }
   },
   {
+    "id": "word-roshogolla-bondi-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["West Bengal"],
+    "left": {
+      "word": "bondi",
+      "label": "bondi",
+      "size": "",
+      "sizeValue": 5,
+      "image": "/assets/images/bondi.jpg"
+    },
+    "right": {
+      "word": "roshogolla",
+      "label": "roshogolla",
+      "size": "",
+      "sizeValue": 8,
+      "image": "/assets/images/roshogolla.jpg"
+    },
+    "explanationSimple": {
+      "en": "A roshogolla is bigger than a bondi. Roshogollas are round and soft sweets, usually larger than the small bondi pieces.",
+      "hi": "रसगुल्ला बूंदी से बड़ा होता है। रसगुल्ले गोल और नरम मिठाई होते हैं, जो आमतौर पर छोटे-छोटे बूंदी के दानों से बड़े होते हैं।",
+      "bn": "রসগোল্লা বুন্দির চেয়ে বড়। রসগোল্লা গোল ও নরম মিষ্টি, যা সাধারণত ছোট ছোট বুন্দির দানার চেয়ে বড় হয়।"
+    }
+  },
+  {
+    "id": "word-delhi-metro-dtc-bus-1",
+    "mode": "word-mode",
+    "difficulty": 5,
+    "class": 5,
+    "location": ["Delhi"],
+    "left": {
+      "word": "dtc bus",
+      "label": "dtc bus",
+      "size": "",
+      "sizeValue": 6,
+      "image": "/assets/images/dtc_bus.jpg"
+    },
+    "right": {
+      "word": "delhi metro",
+      "label": "delhi metro",
+      "size": "",
+      "sizeValue": 9,
+      "image": "/assets/images/delhi_metro.jpg"
+    },
+    "explanationSimple": {
+      "en": "A Delhi Metro train is bigger than a DTC bus. Metro trains are long and can carry many more passengers than buses.",
+      "hi": "दिल्ली मेट्रो ट्रेन डीटीसी बस से बड़ी है। मेट्रो ट्रेनें लंबी होती हैं और बसों से कहीं ज्यादा यात्री ले जा सकती हैं।",
+      "bn": "দিল্লি মেট্রো ট্রেন ডিটিসি বাসের চেয়ে বড়। মেট্রো ট্রেন লম্বা এবং বাসের চেয়ে অনেক বেশি যাত্রী বহন করতে পারে।"
+    }
+  },
+  {
     "id": "word-pond-puddle-1",
     "mode": "word-mode",
     "difficulty": 5,

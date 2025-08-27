@@ -12,7 +12,7 @@ export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
     name: '',
     class: 3,
     nativeLanguage: 'en',
-    location: 'Maharashtra'
+    location: 'West Bengal'
   })
   
   const [funMode, setFunMode] = useState(true)

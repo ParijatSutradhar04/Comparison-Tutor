@@ -70,12 +70,12 @@ export default function MetricsPanel({ engine }: MetricsPanelProps) {
           <div className="w-full bg-gray-200 rounded-full h-4 border-2 border-indigo-300">
             <div 
               className={`bg-gradient-to-r from-indigo-400 to-purple-500 h-full rounded-full transition-all duration-500 relative overflow-hidden ${
-                engine.difficulty === 5 ? 'w-4/5' :
-                engine.difficulty === 4 ? 'w-3/5' :
-                engine.difficulty === 3 ? 'w-2/5' :
-                engine.difficulty === 2 ? 'w-1/5' :
+                engine.difficulty === 5 ? 'w-full' :
+                engine.difficulty === 4 ? 'w-3/4' :
+                engine.difficulty === 3 ? 'w-2/4' :
+                engine.difficulty === 2 ? 'w-1/4' :
                 engine.difficulty === 1 ? 'w-0'   :
-                'w-full'
+                'w-0'
               }`}
             >
               <div className="absolute inset-0 bg-white/20 animate-pulse"></div>

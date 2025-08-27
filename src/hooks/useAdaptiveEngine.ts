@@ -47,7 +47,7 @@ export interface AdaptiveEngineState {
 
 const TIMER_SECONDS = 6
 
-export function useAdaptiveEngine() {
+export function useAdaptiveEngine(studentInfo?: { class: number; location: string }) {
   const [state, setState] = useState<AdaptiveEngineState>({
     mode: 'image-mode',
     difficulty: 1, // Start with difficulty level 1
@@ -108,6 +108,7 @@ export function useAdaptiveEngine() {
     // Determine the current effective mode based on difficulty
     const effectiveMode = state.difficulty >= 4 ? 'word-mode' : 'image-mode'
     console.log(`nextQuestion called with difficulty: ${state.difficulty}, effectiveMode: ${effectiveMode}, class: ${studentClass}, location: ${location}`)
+    console.log(`🌍 LOCATION DEBUG: Looking for questions with location: "${location}"`)
     
     let selectedQuestion: QuestionItem
     
@@ -120,6 +121,9 @@ export function useAdaptiveEngine() {
       // Filter word questions for the current difficulty level
       const difficultyWordQuestions = orderedWordQuestions.filter(q => q.difficulty === state.difficulty)
       console.log(`Difficulty ${state.difficulty} word questions found: ${difficultyWordQuestions.length}`)
+      console.log(`🔍 WORD LOCATION DEBUG: Questions found for "${location}":`, 
+        difficultyWordQuestions.map(q => `${q.id} (locations: [${q.location.join(', ')}])`)
+      )
       
       if (difficultyWordQuestions.length === 0) {
         // Fallback to any word question if no matching difficulty found
@@ -162,6 +166,9 @@ export function useAdaptiveEngine() {
         !recentQuestionIds.includes(q.id)
       )
       console.log(`Image difficulty ${state.difficulty}: Exact match candidates: ${filtered.length}`)
+      console.log(`🔍 LOCATION FILTER DEBUG: Questions found for "${location}":`, 
+        filtered.map(q => `${q.id} (locations: [${q.location.join(', ')}])`)
+      )
 
       // If no exact matches, expand to ±1 difficulty level
       if (filtered.length === 0) {
@@ -176,6 +183,16 @@ export function useAdaptiveEngine() {
       }
 
       // If still no matches, try any image question that hasn't been used recently
+      if (filtered.length === 0) {
+        filtered = typedQuestions.filter((q: QuestionItem) => 
+          q.mode === 'image-mode' &&
+          (q.location.includes(location) || q.location.includes('default')) &&
+          !recentQuestionIds.includes(q.id)
+        )
+        console.log(`Image difficulty ${state.difficulty}: Any location-specific question candidates: ${filtered.length}`)
+      }
+
+      // If still no location-specific matches, try any image question that hasn't been used recently
       if (filtered.length === 0) {
         filtered = typedQuestions.filter((q: QuestionItem) => 
           q.mode === 'image-mode' &&
@@ -230,10 +247,13 @@ export function useAdaptiveEngine() {
       setState(prev => ({ ...prev, shouldAdvanceQuestion: false }))
       // Then advance to next question with a small delay to ensure state is updated
       setTimeout(() => {
-        nextQuestion(3, 'Maharashtra') // TODO: Get these from context
+        const defaultClass = studentInfo?.class || 3
+        const defaultLocation = studentInfo?.location || 'India'
+        console.log(`🚀 AUTO-ADVANCE: Using class: ${defaultClass}, location: "${defaultLocation}"`)
+        nextQuestion(defaultClass, defaultLocation)
       }, 100)
     }
-  }, [state.shouldAdvanceQuestion, state.showOverlay, state.difficulty, nextQuestion])
+  }, [state.shouldAdvanceQuestion, state.showOverlay, state.difficulty, nextQuestion, studentInfo])
 
   const submitAnswer = useCallback((chosenSide: ChosenSide) => {
     if (!state.currentQuestion) return false

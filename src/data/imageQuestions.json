@@ -50,7 +50,7 @@
   {
     "id": "img-elephant-ant-1",
     "mode": "image-mode",
-    "difficulty": 2,
+    "difficulty": 1,
     "class": 2,
     "location": ["India", "default"],
     "left": {
@@ -98,7 +98,7 @@
   {
     "id": "img-mango-lemon-1",
     "mode": "image-mode",
-    "difficulty": 3,
+    "difficulty": 2,
     "class": 3,
     "location": ["India", "default"],
     "left": {
@@ -122,7 +122,7 @@
   {
     "id": "img-banyan-neem-1",
     "mode": "image-mode",
-    "difficulty": 3,
+    "difficulty": 2,
     "class": 3,
     "location": ["India", "default"],
     "left": {
@@ -146,7 +146,7 @@
   {
     "id": "img-jackfruit-guava-1",
     "mode": "image-mode",
-    "difficulty": 4,
+    "difficulty": 2,
     "class": 4,
     "location": ["India", "default"],
     "left": {
@@ -168,9 +168,57 @@
     }
   },
   {
+    "id": "img-howrah-bridge-normal-bridge-1",
+    "mode": "image-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["West Bengal"],
+    "left": {
+      "src": "/assets/images/normal_bridge.jpg",
+      "label": "normal bridge",
+      "size": "",
+      "sizeValue": 5
+    },
+    "right": {
+      "src": "/assets/images/howrah_bridge.jpg",
+      "label": "howrah bridge",
+      "size": "",
+      "sizeValue": 8
+    },
+    "explanationSimple": {
+      "en": "The Howrah Bridge is bigger than a normal bridge. The Howrah Bridge is a famous landmark in Kolkata and much larger than regular bridges.",
+      "hi": "हावड़ा ब्रिज सामान्य पुल से बड़ा है। हावड़ा ब्रिज कोलकाता का प्रसिद्ध स्थल है और सामान्य पुलों से काफी बड़ा है।",
+      "bn": "হাওড়া ব্রিজ সাধারণ সেতুর চেয়ে বড়। হাওড়া ব্রিজ কলকাতার বিখ্যাত ল্যান্ডমার্ক এবং সাধারণ সেতুর চেয়ে অনেক বড়।"
+    }
+  },
+  {
+    "id": "img-qutub-minar-telephone-tower-1",
+    "mode": "image-mode",
+    "difficulty": 3,
+    "class": 3,
+    "location": ["Delhi"],
+    "left": {
+      "src": "/assets/images/telephone_tower.jpg",
+      "label": "telephone tower",
+      "size": "",
+      "sizeValue": 6
+    },
+    "right": {
+      "src": "/assets/images/qutub_minar.jpg",
+      "label": "qutub minar",
+      "size": "",
+      "sizeValue": 9
+    },
+    "explanationSimple": {
+      "en": "The Qutub Minar is taller than a telephone tower. Qutub Minar is a historic monument in Delhi and one of the tallest structures.",
+      "hi": "कुतुब मीनार टेलीफोन टावर से ऊंचा है। कुतुब मीनार दिल्ली का ऐतिहासिक स्मारक है और सबसे ऊंची संरचनाओं में से एक है।",
+      "bn": "কুতুব মিনার টেলিফোন টাওয়ারের চেয়ে উঁচু। কুতুব মিনার দিল্লির ঐতিহাসিক স্মৃতিসৌধ এবং সর্বোচ্চ কাঠামোগুলির মধ্যে একটি।"
+    }
+  },
+  {
     "id": "img-well-pot-1",
     "mode": "image-mode",
-    "difficulty": 4,
+    "difficulty": 3,
     "class": 4,
     "location": ["India", "default"],
     "left": {
@@ -194,7 +242,7 @@
   {
     "id": "img-house-hut-1",
     "mode": "image-mode",
-    "difficulty": 5,
+    "difficulty": 3,
     "class": 5,
     "location": ["India", "default"],
     "left": {
@@ -218,7 +266,7 @@
   {
     "id": "img-buffalo-goat-1",
     "mode": "image-mode",
-    "difficulty": 5,
+    "difficulty": 3,
     "class": 5,
     "location": ["India", "default"],
     "left": {
