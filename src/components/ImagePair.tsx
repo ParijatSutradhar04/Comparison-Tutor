@@ -26,8 +26,8 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
 
   const correctSide: ChosenSide = question.left.sizeValue > question.right.sizeValue ? 'left' : 'right'
   
-  // Show labels only for difficulty 1, hide for difficulty 2-3
-  const showLabels = difficulty === 1
+  // Show labels only for difficulty 1 and 2, hide for difficulty 3
+  const showLabels = difficulty === 1 || difficulty === 2
   // Show images for difficulty 1-3 (all image questions)
   const showImages = true
 
@@ -82,7 +82,7 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
           <img
             src={src}
             alt={`${size} ${label}`}
-            className="w-32 h-32 object-contain border-2 border-gray-300 rounded-lg mx-auto"
+            className="w-60 h-60 object-contain border-2 border-gray-300 rounded-lg mx-auto"
             onError={(e) => {
               console.log(`Failed to load image: ${src}`)
               // If image fails to load, replace with placeholder
@@ -104,26 +104,26 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
   // Generate placeholder SVG as JSX for size-based display
   const generatePlaceholderSVG = (sizeValue: number, label: string, size: string) => {
     // Use size to determine visual representation
-    const circleSize = size === 'large' ? 12 : size === 'medium' ? 8 : 4
+    const circleSize = size === 'large' ? 24 : size === 'medium' ? 16 : 8
     
     return (
-      <svg width="120" height="120" viewBox="0 0 120 120" className="border-2 border-gray-300 rounded-lg mx-auto">
-        <rect width="120" height="120" fill="#f3f4f6" />
+      <svg width="240" height="240" viewBox="0 0 240 240" className="border-2 border-gray-300 rounded-lg mx-auto">
+        <rect width="240" height="240" fill="#f3f4f6" />
         {/* Show label only for difficulty 1-2 */}
         {showLabels && (
-          <text x="60" y="15" textAnchor="middle" className="fill-gray-600 text-xs font-medium">
+          <text x="120" y="30" textAnchor="middle" className="fill-gray-600 text-sm font-medium">
             {size} {label}
           </text>
         )}
         {/* Single representation scaled by size */}
         <circle
-          cx="60"
-          cy="60"
+          cx="120"
+          cy="120"
           r={circleSize}
           fill="#6366f1"
           opacity="0.8"
         />
-        <text x="60" y="110" textAnchor="middle" className="fill-gray-500 text-xs">
+        <text x="120" y="220" textAnchor="middle" className="fill-gray-500 text-sm">
           Size: {sizeValue}/10
         </text>
       </svg>
@@ -132,15 +132,15 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
 
   // Generate placeholder HTML string for error fallback
   const generatePlaceholderHTML = (sizeValue: number, label: string, size: string) => {
-    const circleSize = size === 'large' ? 12 : size === 'medium' ? 8 : 4
-    const labelHTML = showLabels ? `<text x="60" y="15" text-anchor="middle" class="fill-gray-600 text-xs font-medium">${size} ${label}</text>` : ''
+    const circleSize = size === 'large' ? 24 : size === 'medium' ? 16 : 8
+    const labelHTML = showLabels ? `<text x="120" y="30" text-anchor="middle" class="fill-gray-600 text-sm font-medium">${size} ${label}</text>` : ''
     
     return `
-      <svg width="120" height="120" viewBox="0 0 120 120" class="border-2 border-gray-300 rounded-lg mx-auto">
-        <rect width="120" height="120" fill="#f3f4f6" />
+      <svg width="240" height="240" viewBox="0 0 240 240" class="border-2 border-gray-300 rounded-lg mx-auto">
+        <rect width="240" height="240" fill="#f3f4f6" />
         ${labelHTML}
-        <circle cx="60" cy="60" r="${circleSize}" fill="#6366f1" opacity="0.8" />
-        <text x="60" y="110" text-anchor="middle" class="fill-gray-500 text-xs">Size: ${sizeValue}/10</text>
+        <circle cx="120" cy="120" r="${circleSize}" fill="#6366f1" opacity="0.8" />
+        <text x="120" y="220" text-anchor="middle" class="fill-gray-500 text-sm">Size: ${sizeValue}/10</text>
       </svg>
     `
   }
