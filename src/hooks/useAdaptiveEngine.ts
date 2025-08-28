@@ -75,18 +75,6 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
     }
   }, [])
 
-  // Get word questions in order for sequential selection
-  const getOrderedWordQuestions = useCallback((location: string) => {
-    const wordQuestions = getQuestionsByMode('word-mode')
-    // For word questions, we want them in the EXACT order they appear in the JSON file
-    // No sorting - preserve the original file order
-    return wordQuestions.filter((q: QuestionItem) => 
-      q.mode === 'word-mode' &&
-      (q.location.includes(location) || q.location.includes('default'))
-    )
-    // No .sort() here - preserve original JSON file order
-  }, [getQuestionsByMode])
-
   // Timer effect
   useEffect(() => {
     let interval: number
@@ -104,109 +92,140 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
     return () => clearInterval(interval)
   }, [state.timerActive, state.timerSeconds])
 
-  const nextQuestion = useCallback((studentClass: number = 3, location: string = 'India') => {
+  const nextQuestion = useCallback((location: string = 'India') => {
     // Determine the current effective mode based on difficulty
     const effectiveMode = state.difficulty >= 4 ? 'word-mode' : 'image-mode'
-    console.log(`nextQuestion called with difficulty: ${state.difficulty}, effectiveMode: ${effectiveMode}, class: ${studentClass}, location: ${location}`)
+    console.log(`nextQuestion called with difficulty: ${state.difficulty}, effectiveMode: ${effectiveMode}, location: ${location}`)
     console.log(`🌍 LOCATION DEBUG: Looking for questions with location: "${location}"`)
     
     let selectedQuestion: QuestionItem
     
     if (effectiveMode === 'word-mode') {
-      // DIFFICULTY 4-5: Use word questions
-      const orderedWordQuestions = getOrderedWordQuestions(location)
-      console.log(`Word difficulty ${state.difficulty}: ${orderedWordQuestions.length} ordered questions available`)
-      console.log(`Word questions found:`, orderedWordQuestions.map(q => `${q.id} (diff: ${q.difficulty}, class: ${q.class})`))
+      // DIFFICULTY 4-5: Use word questions with priority-based location filtering
+      const allWordQuestions = getQuestionsByMode('word-mode') as QuestionItem[]
+      console.log(`Word difficulty ${state.difficulty}: Starting word question selection for "${location}"`)
       
-      // Filter word questions for the current difficulty level
-      const difficultyWordQuestions = orderedWordQuestions.filter(q => q.difficulty === state.difficulty)
-      console.log(`Difficulty ${state.difficulty} word questions found: ${difficultyWordQuestions.length}`)
-      console.log(`🔍 WORD LOCATION DEBUG: Questions found for "${location}":`, 
-        difficultyWordQuestions.map(q => `${q.id} (locations: [${q.location.join(', ')}])`)
+      // PRIORITY 1: First, try questions that match exact location (not default) for current difficulty
+      let filteredWordQuestions = allWordQuestions.filter((q: QuestionItem) => 
+        q.mode === 'word-mode' &&
+        q.difficulty === state.difficulty &&
+        q.location.includes(location) && // Only exact location match
+        !q.location.includes('default') // Exclude default questions in first pass
       )
+      console.log(`🔍 WORD PRIORITY 1: Exact location "${location}" questions found: ${filteredWordQuestions.length}`)
+      console.log(`Word questions (exact location):`, filteredWordQuestions.map(q => `${q.id} (locations: [${q.location.join(', ')}])`))
       
-      if (difficultyWordQuestions.length === 0) {
-        // Fallback to any word question if no matching difficulty found
-        console.warn(`No word questions found for difficulty ${state.difficulty}, using fallback`)
-        const allWordQuestions = getQuestionsByMode('word-mode')
-        const currentDifficultyIndex = wordQuestionIndices[state.difficulty] || 0
-        const fallbackQuestion = allWordQuestions[currentDifficultyIndex % allWordQuestions.length] || allWordQuestions[0]
-        if (fallbackQuestion && fallbackQuestion.mode === 'word-mode') {
-          selectedQuestion = fallbackQuestion
-        } else {
-          console.error('No valid word questions available!')
-          selectedQuestion = allWordQuestions[0] || { id: 'fallback', mode: 'word-mode' } as QuestionItem
-        }
-      } else {
-        // Select question based on current index (sequential order)  
-        const currentDifficultyIndex = wordQuestionIndices[state.difficulty] || 0
-        const questionIndex = currentDifficultyIndex % difficultyWordQuestions.length
-        selectedQuestion = difficultyWordQuestions[questionIndex]
-        console.log(`Selected difficulty ${state.difficulty} word question ${questionIndex + 1}/${difficultyWordQuestions.length}: ${selectedQuestion.id}`)
+      // PRIORITY 2: If no exact location matches, try default questions for current difficulty
+      if (filteredWordQuestions.length === 0) {
+        filteredWordQuestions = allWordQuestions.filter((q: QuestionItem) => 
+          q.mode === 'word-mode' &&
+          q.difficulty === state.difficulty &&
+          q.location.includes('default') // Only default questions
+        )
+        console.log(`🔍 WORD PRIORITY 2: Default questions found: ${filteredWordQuestions.length}`)
+        console.log(`Word questions (default):`, filteredWordQuestions.map(q => `${q.id} (locations: [${q.location.join(', ')}])`))
       }
       
-      // Increment index for next word question
-      setWordQuestionIndices(prev => ({
-        ...prev,
-        [state.difficulty]: (prev[state.difficulty] || 0) + 1
-      }))
-      const currentDifficultyIndex = wordQuestionIndices[state.difficulty] || 0
-      console.log(`Selected word question: ${selectedQuestion.id} (index was: ${currentDifficultyIndex}, now: ${currentDifficultyIndex + 1})`)
+      // PRIORITY 3: If still no matches, fallback to any word question of current difficulty
+      if (filteredWordQuestions.length === 0) {
+        filteredWordQuestions = allWordQuestions.filter((q: QuestionItem) => 
+          q.mode === 'word-mode' &&
+          q.difficulty === state.difficulty
+        )
+        console.log(`🔍 WORD PRIORITY 3: Any difficulty ${state.difficulty} questions found: ${filteredWordQuestions.length}`)
+      }
+      
+      if (filteredWordQuestions.length === 0) {
+        // Final fallback to any word question if no matching difficulty found
+        console.warn(`No word questions found for difficulty ${state.difficulty}, using any available word question`)
+        filteredWordQuestions = allWordQuestions.filter(q => q.mode === 'word-mode')
+      }
+      
+      if (filteredWordQuestions.length > 0) {
+        // Select question based on current index (sequential order)  
+        const currentDifficultyIndex = wordQuestionIndices[state.difficulty] || 0
+        const questionIndex = currentDifficultyIndex % filteredWordQuestions.length
+        selectedQuestion = filteredWordQuestions[questionIndex]
+        console.log(`Selected word question ${questionIndex + 1}/${filteredWordQuestions.length}: ${selectedQuestion.id}`)
+        
+        // Increment index for next word question
+        setWordQuestionIndices(prev => ({
+          ...prev,
+          [state.difficulty]: (prev[state.difficulty] || 0) + 1
+        }))
+      } else {
+        console.error('No valid word questions available!')
+        selectedQuestion = allWordQuestions[0] || { id: 'fallback', mode: 'word-mode' } as QuestionItem
+      }
       
     } else {
-      // DIFFICULTY 1-3: Use image questions
+      // DIFFICULTY 1-3: Use image questions - STRICT difficulty matching only
       const typedQuestions = imageQuestions as QuestionItem[]
       
-      // First, try to find questions that match exactly and aren't recently used
+      // PRIORITY 1: First, try to find questions that match exactly with selected location (not default) and aren't recently used
       let filtered = typedQuestions.filter((q: QuestionItem) => 
         q.mode === 'image-mode' &&
         q.difficulty === state.difficulty &&
-        (q.class === studentClass || q.class === 0) &&
-        (q.location.includes(location) || q.location.includes('default')) &&
+        q.location.includes(location) && // Only exact location match
+        !q.location.includes('default') && // Exclude default questions in first pass
         !recentQuestionIds.includes(q.id)
       )
-      console.log(`Image difficulty ${state.difficulty}: Exact match candidates: ${filtered.length}`)
-      console.log(`🔍 LOCATION FILTER DEBUG: Questions found for "${location}":`, 
-        filtered.map(q => `${q.id} (locations: [${q.location.join(', ')}])`)
+      console.log(`Image difficulty ${state.difficulty}: Exact location match candidates: ${filtered.length}`)
+      console.log(`🔍 LOCATION FILTER DEBUG - Step 1: Questions found for exact "${location}":`, 
+        filtered.map(q => `${q.id} (class: ${q.class}, locations: [${q.location.join(', ')}])`)
       )
 
-      // If no exact matches, expand to ±1 difficulty level
+      // PRIORITY 2: If no exact location matches, try default questions that aren't recently used
       if (filtered.length === 0) {
         filtered = typedQuestions.filter((q: QuestionItem) => 
           q.mode === 'image-mode' &&
-          Math.abs(q.difficulty - state.difficulty) <= 1 &&
-          (q.class === studentClass || q.class === 0) &&
-          (q.location.includes(location) || q.location.includes('default')) &&
+          q.difficulty === state.difficulty &&
+          q.location.includes('default') && // Only default questions
           !recentQuestionIds.includes(q.id)
         )
-        console.log(`Image difficulty ${state.difficulty}: ±1 difficulty candidates: ${filtered.length}`)
+        console.log(`Image difficulty ${state.difficulty}: Default location candidates: ${filtered.length}`)
+        console.log(`🔍 LOCATION FILTER DEBUG - Step 2: Default questions found:`, 
+          filtered.map(q => `${q.id} (class: ${q.class}, locations: [${q.location.join(', ')}])`)
+        )
       }
 
-      // If still no matches, try any image question that hasn't been used recently
+      // PRIORITY 3: If no location-specific or default matches, try exact location with recently used questions
       if (filtered.length === 0) {
         filtered = typedQuestions.filter((q: QuestionItem) => 
           q.mode === 'image-mode' &&
-          (q.location.includes(location) || q.location.includes('default')) &&
-          !recentQuestionIds.includes(q.id)
+          q.difficulty === state.difficulty &&
+          q.location.includes(location) && // Only exact location match
+          !q.location.includes('default') // Exclude default questions
         )
-        console.log(`Image difficulty ${state.difficulty}: Any location-specific question candidates: ${filtered.length}`)
+        console.log(`Image difficulty ${state.difficulty}: Exact location (with recent) candidates: ${filtered.length}`)
+        console.log(`🔍 LOCATION FILTER DEBUG - Step 3: Exact location with recent:`, 
+          filtered.map(q => `${q.id} (class: ${q.class}, locations: [${q.location.join(', ')}])`)
+        )
+        // Reset recent IDs since we're allowing previously used questions
+        if (filtered.length > 0) {
+          setRecentQuestionIds([])
+        }
       }
 
-      // If still no location-specific matches, try any image question that hasn't been used recently
+      // PRIORITY 4: If still no matches, allow default questions with recently used
       if (filtered.length === 0) {
         filtered = typedQuestions.filter((q: QuestionItem) => 
           q.mode === 'image-mode' &&
-          !recentQuestionIds.includes(q.id)
+          q.difficulty === state.difficulty &&
+          q.location.includes('default')
         )
-        console.log(`Image difficulty ${state.difficulty}: Any image question candidates: ${filtered.length}`)
-      }
-
-      // If absolutely no unused questions, reset and try again
-      if (filtered.length === 0) {
-        console.log('Image questions: No unused questions found, using any image question')
-        filtered = typedQuestions.filter((q: QuestionItem) => q.mode === 'image-mode')
-        // Reset recent IDs for image mode
+        console.log(`Image difficulty ${state.difficulty}: Default (with recent) candidates: ${filtered.length}`)
+        console.log(`🔍 LOCATION FILTER DEBUG - Step 4: Default with recent:`, 
+          filtered.map(q => `${q.id} (class: ${q.class}, locations: [${q.location.join(', ')}])`)
+        )
+        // Reset recent IDs since we're allowing previously used questions
         setRecentQuestionIds([])
+      }
+
+      // Final fallback: if absolutely no questions exist for this difficulty, use any available
+      if (filtered.length === 0) {
+        console.warn(`No questions found for difficulty ${state.difficulty}, using any image question as fallback`)
+        filtered = typedQuestions.filter((q: QuestionItem) => q.mode === 'image-mode')
       }
 
       // Select a random question from the filtered list
@@ -237,7 +256,7 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
       timerActive: selectedQuestion.difficulty === 5 && selectedQuestion.mode === 'word-mode',
       timerSeconds: TIMER_SECONDS
     }))
-  }, [state.difficulty, state.mode, recentQuestionIds, wordQuestionIndices, getOrderedWordQuestions, getQuestionsByMode])
+  }, [state.difficulty, state.mode, recentQuestionIds, wordQuestionIndices, getQuestionsByMode])
 
   // Auto-advance to next question after state updates
   useEffect(() => {
@@ -247,10 +266,9 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
       setState(prev => ({ ...prev, shouldAdvanceQuestion: false }))
       // Then advance to next question with a small delay to ensure state is updated
       setTimeout(() => {
-        const defaultClass = studentInfo?.class || 3
         const defaultLocation = studentInfo?.location || 'India'
-        console.log(`🚀 AUTO-ADVANCE: Using class: ${defaultClass}, location: "${defaultLocation}"`)
-        nextQuestion(defaultClass, defaultLocation)
+        console.log(`🚀 AUTO-ADVANCE: Using location: "${defaultLocation}"`)
+        nextQuestion(defaultLocation)
       }, 100)
     }
   }, [state.shouldAdvanceQuestion, state.showOverlay, state.difficulty, nextQuestion, studentInfo])
@@ -265,7 +283,7 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
     const newRecentAnswers = [correct, ...state.recentAnswers.slice(0, 4)]
     const newConsecutiveCorrect = correct ? state.consecutiveCorrect + 1 : 0
     const newDifficulty = correct 
-      ? (newConsecutiveCorrect >= 2 && newConsecutiveCorrect % 2 === 0 ? Math.min(5, state.difficulty + 1) : state.difficulty)
+      ? Math.min(5, state.difficulty + 1) // Increase difficulty on every correct answer
       : (state.difficulty === 5 ? 5 : Math.max(1, state.difficulty - 1)) // Don't decrease from difficulty 5
     
     // DEBUG: Difficulty change logic
@@ -311,7 +329,7 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
     console.log(`⏱️ TIMER EXPIRED - New difficulty should be: ${state.difficulty === 5 ? 5 : Math.max(1, state.difficulty - 1)}`)
   }, [state.difficulty])
 
-  const closeOverlay = useCallback((shouldAdvance = false, studentClass?: number, location?: string) => {
+  const closeOverlay = useCallback((shouldAdvance = false, location?: string) => {
     console.log(`📋 OVERLAY CLOSED - No difficulty change on overlay close`)
     setState(prev => ({
       ...prev,
@@ -324,9 +342,9 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
     // Don't reset it here since we want to maintain sequential progression
     
     // If called after a wrong answer, advance to next question
-    if (shouldAdvance && studentClass && location) {
+    if (shouldAdvance && location) {
       setTimeout(() => {
-        nextQuestion(studentClass, location)
+        nextQuestion(location)
       }, 200) // Quick delay to let overlay close smoothly
     }
   }, [nextQuestion])

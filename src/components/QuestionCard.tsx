@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { StudentInfo, useAppContext } from '../contexts/AppContext'
 import { AdaptiveEngineState, ChosenSide } from '../hooks/useAdaptiveEngine'
 import ImagePair from './ImagePair'
@@ -8,10 +8,10 @@ import { fireStarConfetti } from '../utils/confetti'
 
 interface QuestionCardProps {
   engine: AdaptiveEngineState & {
-    nextQuestion: (studentClass: number, location: string) => void
+    nextQuestion: (location: string) => void
     submitAnswer: (side: ChosenSide) => boolean
     timerExpired: () => void
-    closeOverlay: (shouldAdvance?: boolean, studentClass?: number, location?: string) => void
+    closeOverlay: (shouldAdvance?: boolean, location?: string) => void
   }
   studentInfo: StudentInfo
 }
@@ -20,6 +20,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
   const { strings } = useAppContext()
   const [isProcessing, setIsProcessing] = useState(false)
   const [isPortrait, setIsPortrait] = useState(false)
+  const initializedRef = useRef(false)
 
   // Check if screen is in portrait mode
   useEffect(() => {
@@ -39,10 +40,11 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
   }
 
   useEffect(() => {
-    if (!engine.currentQuestion) {
-      engine.nextQuestion(studentInfo.class, studentInfo.location)
+    if (!engine.currentQuestion && !initializedRef.current) {
+      initializedRef.current = true
+      engine.nextQuestion(studentInfo.location)
     }
-  }, [engine, studentInfo])
+  }, []) // Remove dependencies that cause infinite loops
 
   // Force reload question when difficulty crosses mode boundary (3↔4)
   useEffect(() => {
@@ -54,7 +56,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
           expectedMode,
           currentQuestionMode: engine.currentQuestion.mode
         })
-        engine.nextQuestion(studentInfo.class, studentInfo.location)
+        engine.nextQuestion(studentInfo.location)
       }
     }
   }, [engine.difficulty, engine.currentQuestion, engine, studentInfo])
@@ -168,7 +170,7 @@ export default function QuestionCard({ engine, studentInfo }: QuestionCardProps)
               <p>Question mode mismatch detected</p>
               <p>Difficulty: {engine.difficulty}, Question Mode: {engine.currentQuestion?.mode}</p>
               <button 
-                onClick={() => engine.nextQuestion(studentInfo.class, studentInfo.location)}
+                onClick={() => engine.nextQuestion(studentInfo.location)}
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
               >
                 Load Next Question

@@ -76,17 +76,13 @@ export default function ImagePair({ question, onAnswer, difficulty = 1 }: ImageP
 
   // Try to render actual image first, fallback to generated placeholder
   const renderImage = (src: string | undefined, sizeValue: number, label: string, size: string) => {
-    console.log('ImagePair renderImage called with:', { src, sizeValue, label, size })
-    
     if (src) {
-      console.log('Attempting to load image:', src)
       return (
         <div className="relative">
           <img
             src={src}
             alt={`${size} ${label}`}
             className="w-32 h-32 object-contain border-2 border-gray-300 rounded-lg mx-auto"
-            onLoad={() => console.log('Image loaded successfully:', src)}
             onError={(e) => {
               console.log(`Failed to load image: ${src}`)
               // If image fails to load, replace with placeholder

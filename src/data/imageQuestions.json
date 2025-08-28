@@ -4,7 +4,7 @@
     "mode": "image-mode",
     "difficulty": 1,
     "class": 1,
-    "location": ["India", "default"],
+    "location": ["West Bengal"],
     "right": {
       "src": "/assets/images/banyan_tree.jpg",
       "label": "banyan tree",
@@ -28,7 +28,7 @@
     "mode": "image-mode",
     "difficulty": 1,
     "class": 1,
-    "location": ["India", "default"],
+    "location": ["Delhi"],
     "left": {
       "src": "/assets/images/cow.jpg",
       "label": "cow",
@@ -76,7 +76,7 @@
     "mode": "image-mode",
     "difficulty": 2,
     "class": 2,
-    "location": ["India", "default"],
+    "location": ["West Bengal"],
     "right": {
       "src": "/assets/images/water_buffalo.jpg",
       "label": "water buffalo",
@@ -100,7 +100,7 @@
     "mode": "image-mode",
     "difficulty": 2,
     "class": 3,
-    "location": ["India", "default"],
+    "location": ["Delhi"],
     "left": {
       "src": "/assets/images/mango.jpg",
       "label": "mango",
@@ -222,8 +222,8 @@
     "class": 4,
     "location": ["India", "default"],
     "left": {
-      "src": "/assets/images/village_well.jpg",
-      "label": "village well",
+      "src": "/assets/images/water_tank.jpg",
+      "label": "water tank",
       "size": "",
       "sizeValue": 8
     },
@@ -234,7 +234,7 @@
       "sizeValue": 3
     },
     "explanationSimple": {
-      "en": "A village well is bigger than a water pot. Wells are deep and can hold much more water than pots.",
+      "en": "An overhead water tank is much bigger than a water pot. Tanks are large and can hold much more water than pots.",
       "hi": "गांव का कुआँ पानी के घड़े से बड़ा होता है। कुआँ गहरा होता है और इसमें घड़े से ज्यादा पानी आता है।",
       "bn": "গ্রামের কুয়ো পানির হাঁড়ির চেয়ে বড়। কুয়ো গহীন এবং এতে হাঁড়ির চেয়ে অনেক বেশি পানি থাকে।"
     }

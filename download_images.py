@@ -4,29 +4,27 @@ import re
 import os
 import json
 
-# # Load both question files
-# image_questions_file = r"src\data\imageQuestions.json"
-# word_questions_file = r"src\data\wordQuestions.json"
+# Load both question files
+image_questions_file = r"src\data\imageQuestions.json"
+word_questions_file = r"src\data\wordQuestions.json"
 
-# with open(image_questions_file, "r", encoding="utf-8-sig") as f:
-#     image_data = json.load(f)
+with open(image_questions_file, "r", encoding="utf-8-sig") as f:
+    image_data = json.load(f)
 
-# with open(word_questions_file, "r", encoding="utf-8-sig") as f:
-#     word_data = json.load(f)
+with open(word_questions_file, "r", encoding="utf-8-sig") as f:
+    word_data = json.load(f)
 
-# # Combine all questions for processing
-# data = image_data + word_data
+# Combine all questions for processing
+data = image_data + word_data
 
-# items = []
-# for item in data:
-#     if "left" in item and "label" in item["left"]:
-#         items.append(item["left"]["label"])
-#     if "right" in item and "label" in item["right"]:
-#         items.append(item["right"]["label"])
+items = []
+for item in data:
+    if "left" in item and "label" in item["left"]:
+        items.append(item["left"]["label"])
+    if "right" in item and "label" in item["right"]:
+        items.append(item["right"]["label"])
 
-# print(items)
-
-items = ["telephone tower", "qutub minar", "howrah bridge", "normal bridge", "roshogolla", "bondi"]
+print(items)
 
 # Make downloads folder if not present
 folder = os.path.normpath(r"public\assets\images")
