@@ -110,10 +110,26 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
         q.mode === 'word-mode' &&
         q.difficulty === state.difficulty &&
         q.location.includes(location) && // Only exact location match
-        !q.location.includes('default') // Exclude default questions in first pass
+        !q.location.includes('default') && // Exclude default questions in first pass
+        !recentQuestionIds.includes(q.id) // Exclude recently used
       )
       console.log(`🔍 WORD PRIORITY 1: Exact location "${location}" questions found: ${filteredWordQuestions.length}`)
       console.log(`Word questions (exact location):`, filteredWordQuestions.map(q => `${q.id} (locations: [${q.location.join(', ')}])`))
+      
+      // Check if there's only 1 location-specific word question total and it's recently used
+      const allLocationSpecificWords = allWordQuestions.filter((q: QuestionItem) => 
+        q.mode === 'word-mode' &&
+        q.difficulty === state.difficulty &&
+        q.location.includes(location) &&
+        !q.location.includes('default')
+      )
+      const shouldSkipToDefaultWords = allLocationSpecificWords.length === 1 && 
+                                      recentQuestionIds.includes(allLocationSpecificWords[0].id)
+      
+      if (shouldSkipToDefaultWords) {
+        console.log(`🔄 SMART WORD FALLBACK: Only 1 location-specific word question "${allLocationSpecificWords[0].id}" is recently used, skipping to default questions`)
+        filteredWordQuestions = [] // Force skip to step 2 (default questions)
+      }
       
       // PRIORITY 2: If no exact location matches, try default questions for current difficulty
       if (filteredWordQuestions.length === 0) {
@@ -148,6 +164,10 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
         selectedQuestion = filteredWordQuestions[questionIndex]
         console.log(`Selected word question ${questionIndex + 1}/${filteredWordQuestions.length}: ${selectedQuestion.id}`)
         
+        // Update recent questions for word questions too (for smart fallback logic)
+        const updatedRecentIds = [selectedQuestion.id, ...recentQuestionIds.slice(0, 4)]
+        setRecentQuestionIds(updatedRecentIds)
+        
         // Increment index for next word question
         setWordQuestionIndices(prev => ({
           ...prev,
@@ -174,6 +194,21 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
       console.log(`🔍 LOCATION FILTER DEBUG - Step 1: Questions found for exact "${location}":`, 
         filtered.map(q => `${q.id} (class: ${q.class}, locations: [${q.location.join(', ')}])`)
       )
+
+      // Check if there's only 1 location-specific question total and it's recently used
+      const allLocationSpecific = typedQuestions.filter((q: QuestionItem) => 
+        q.mode === 'image-mode' &&
+        q.difficulty === state.difficulty &&
+        q.location.includes(location) &&
+        !q.location.includes('default')
+      )
+      const shouldSkipToDefault = allLocationSpecific.length === 1 && 
+                                 recentQuestionIds.includes(allLocationSpecific[0].id)
+      
+      if (shouldSkipToDefault) {
+        console.log(`🔄 SMART FALLBACK: Only 1 location-specific question "${allLocationSpecific[0].id}" is recently used, skipping to default questions`)
+        filtered = [] // Force skip to step 2 (default questions)
+      }
 
       // PRIORITY 2: If no exact location matches, try default questions that aren't recently used
       if (filtered.length === 0) {
@@ -232,7 +267,7 @@ export function useAdaptiveEngine(studentInfo?: { class: number; location: strin
       selectedQuestion = filtered[Math.floor(Math.random() * filtered.length)] || typedQuestions[0]
       console.log(`Selected image question: ${selectedQuestion.id}, difficulty: ${selectedQuestion.difficulty}`)
       
-      // Update recent questions for image mode only - keep last 5 questions to avoid repetition
+      // Update recent questions - keep last 5 questions to avoid repetition
       const updatedRecentIds = [selectedQuestion.id, ...recentQuestionIds.slice(0, 4)]
       console.log(`Updated recent question IDs: ${updatedRecentIds.join(', ')}`)
       setRecentQuestionIds(updatedRecentIds)
